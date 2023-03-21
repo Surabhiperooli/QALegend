@@ -1,0 +1,15 @@
+com\obsqura\pages\RolesPage.class
+com\obsqura\utiities\GenericUtilities.class
+com\obsqura\constants\Constants.class
+com\obsqura\pages\Userpage.class
+com\obsqura\pages\CustomerPage.class
+com\obsqura\utiities\WaitUtilities.class
+com\obsqura\pages\Homepage.class
+com\obsqura\utiities\PageUtilities.class
+com\obsqura\pages\ProductPage.class
+com\obsqura\pages\LoginPage.class
+com\obsqura\pages\BrandPage.class
+com\obsqura\pages\TaxRatePage.class
+excelutiities\NewExcelLibrary.class
+com\obsqura\utiities\StringUtilities.class
+com\obsqura\pages\Profilepage.class

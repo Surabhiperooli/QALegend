@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Command line suite]" verbose="0">
+  <test thread-count="5" name="Command line test(failed)" verbose="0">
+    <classes>
+      <class name="com.obsquara.scripts.TaxRatePageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="verifyWhetherTheUserCanAddNewTaxRate"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.TaxRatePageTest -->
+      <class name="com.obsquara.scripts.HomepageTest">
+        <methods>
+          <include name="verifyTodaysProfitMessageDisplayingWhileClickingOnTodaysProfitIcon"/>
+          <include name="verifyCalcutatorShowingWhileClickingOnCalculatorIcon"/>
+          <include name="verifyWelcomeMessageShowingAsExpected"/>
+          <include name="launchbrowser"/>
+          <include name="checkHomePageloaded"/>
+          <include name="verifyNotificationmessageShowingUponClickingBellButton"/>
+          <include name="verifyUserManagementDropDownIsWorking"/>
+          <include name="verifyhomepagetitle"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.HomepageTest -->
+      <class name="com.obsquara.scripts.BrandpageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="verifyUserCanAddNewBrand"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.BrandpageTest -->
+      <class name="com.obsquara.scripts.ProfilepageTest">
+        <methods>
+          <include name="verifyUserCanUpdatePassword"/>
+          <include name="VerifyUserCanChooseLanguageFromrowpDownList"/>
+          <include name="launchbrowser"/>
+          <include name="verifyUserCanEditProfile"/>
+          <include name="IsProfilePageLoadedSuccesfully"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.ProfilepageTest -->
+      <class name="com.obsquara.scripts.CustomerpageTest">
+        <methods>
+          <include name="verifyCustomerEntryIsAbleToCopyToClipboard"/>
+          <include name="launchbrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.CustomerpageTest -->
+      <class name="com.obsquara.scripts.RolesPageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="verifyTheUserCanSorttheRolesTable"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.RolesPageTest -->
+      <class name="com.obsquara.scripts.LoginPageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="checkSignOut"/>
+          <include name="verifyUserIsAbleToChooseRememberMeOption"/>
+          <include name="verifyUserisAbleToLoginWitvalidloginfunction"/>
+          <include name="verifyUserIsNotAbleToLoginWitInvalidPassword"/>
+          <include name="verifyUserIsNotAbleToLoginWitInvalidUsername"/>
+          <include name="verifyUserIsNotAbleToLoginWitInvalidloginfunction"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.LoginPageTest -->
+      <class name="com.obsquara.scripts.ProductPageTest">
+        <methods>
+          <include name="verifyDropDownlistisDisplayingUponClickingOndropdownarrow"/>
+          <include name="verifySelectAllProductselectsallInProductPage"/>
+          <include name="launchbrowser"/>
+          <include name="verifyClickingonDeactiveselectiveButtonShowsWarningMessageAlert"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.ProductPageTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->
