@@ -1,14 +1,15 @@
 package com.obsquara.scripts;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.obsqura.pages.Expensepage;
 import com.obsqura.pages.Homepage;
 import com.obsqura.pages.LoginPage;
-
+@Listeners(com.obsqura.listners.TestNGListerner.class)
 public class Expensepagetest extends TestHelper{
-	//@Test
+	@Test
 	public void verifyUserCanAddNewExpense() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials("admin", "123456");
@@ -16,14 +17,10 @@ public class Expensepagetest extends TestHelper{
 		homepage.closeEndtour();
 		Expensepage expensepage=new Expensepage(driver);
 		expensepage.addExpenses();
-		if (expensepage.expenseAddedMessage.isDisplayed()) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
+		Assert.assertTrue (expensepage.expenseAddedMessage.isDisplayed());
+			
 		}
-
-		
-}@Test
+	@Test
 	public void verifyUserCanAddExpenseCategory() {
 	LoginPage loginpage = new LoginPage(driver);
 	loginpage.loginWithvalidLoginCredentials("admin", "123456");
@@ -31,10 +28,7 @@ public class Expensepagetest extends TestHelper{
 	homepage.closeEndtour();
 	Expensepage expensepage=new Expensepage(driver);
 	expensepage.addexpensecategory();
-	if (expensepage.categoryaddedmessage.isDisplayed()) {
-		Assert.assertTrue(true);
-	} else {
-		Assert.assertTrue(false);
-	}
+	Assert.assertTrue (expensepage.categoryaddedmessage.isDisplayed());
+		
 	
 }}

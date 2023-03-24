@@ -2,15 +2,14 @@ package com.obsquara.scripts;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.obsqura.constants.Constants;
 import com.obsqura.pages.Homepage;
 import com.obsqura.pages.LoginPage;
-import com.obsqura.utiities.PageUtilities;
-
-import excelutiities.NewExcelLibrary;
-
+import com.obsqura.utiities.ExcelUtilities;
+@Listeners(com.obsqura.listners.TestNGListerner.class)
 public class LoginPageTest extends TestHelper {
 	
 	@Test(priority = 4, dataProvider = "ValidCredentials")
@@ -79,14 +78,14 @@ public class LoginPageTest extends TestHelper {
 
 @DataProvider(name="Credentials1")
 	public Object[][] getInValidData() throws Throwable {
-		String path = Constants.EXCEL_FILE_PATH+"\\LoginData.xlsx";
-		NewExcelLibrary lib = new NewExcelLibrary(path);
-		int totalrows = lib.getRowCount("Sheet1");
-		int totalcols = lib.getCellCount("Sheet1", 1);
+		String path = Constants.EXCEL_FILE_PATH;
+		ExcelUtilities  excelu = new ExcelUtilities (path);
+		int totalrows = excelu.getRowCount("Invalidusernameandpassword");
+		int totalcols = excelu.getCellCount("Invalidusernameandpassword", 1);
 		String invalidloginData[][] = new String[totalrows][totalcols];
 		for (int i = 1; i <= totalrows; i++) {
 			for (int j = 0; j < totalcols; j++) {
-				invalidloginData[i - 1][j] = lib.getCellData("Sheet1", i, j);
+				invalidloginData[i - 1][j] = excelu.getCellData("Invalidusernameandpassword", i, j);
 			}
 
 		}
@@ -95,15 +94,15 @@ public class LoginPageTest extends TestHelper {
 
 @DataProvider(name="Credentials2")
 	public Object[][] getInValidpassword() throws Throwable {
-		String path = Constants.EXCEL_FILE_PATH+"\\LoginData.xlsx";
+		String path = Constants.EXCEL_FILE_PATH;
 
-		NewExcelLibrary lib = new NewExcelLibrary(path);
-		int totalrows = lib.getRowCount("Sheet2");
-		int totalcols = lib.getCellCount("Sheet2", 1);
+		ExcelUtilities  excelu = new ExcelUtilities (path);
+		int totalrows = excelu.getRowCount("Invalidpassword");
+		int totalcols = excelu.getCellCount("Invalidpassword", 1);
 		String invalidloginpassword[][] = new String[totalrows][totalcols];
 		for (int i = 1; i <= totalrows; i++) {
 			for (int j = 0; j < totalcols; j++) {
-				invalidloginpassword[i - 1][j] = lib.getCellData("Sheet2", i, j);
+				invalidloginpassword[i - 1][j] = excelu.getCellData("Invalidpassword", i, j);
 			}
 
 		}
@@ -112,15 +111,15 @@ public class LoginPageTest extends TestHelper {
 
 @DataProvider(name="Credentials3")
 	public Object[][] getInValidUsername() throws Throwable {
-		String path = Constants.EXCEL_FILE_PATH+"\\LoginData.xlsx";
+		String path = Constants.EXCEL_FILE_PATH;
 
-		NewExcelLibrary lib = new NewExcelLibrary(path);
-		int totalrows = lib.getRowCount("Sheet3");
-		int totalcols = lib.getCellCount("Sheet3", 1);
+		ExcelUtilities  lib = new ExcelUtilities (path);
+		int totalrows = lib.getRowCount("Invalidusername");
+		int totalcols = lib.getCellCount("Invalidusername", 1);
 		String invalidloginUsername[][] = new String[totalrows][totalcols];
 		for (int i = 1; i <= totalrows; i++) {
 			for (int j = 0; j < totalcols; j++) {
-				invalidloginUsername[i - 1][j] = lib.getCellData("Sheet3", i, j);
+				invalidloginUsername[i - 1][j] = lib.getCellData("Invalidusername", i, j);
 			}
 
 		}

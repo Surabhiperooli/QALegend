@@ -1,12 +1,13 @@
 package com.obsquara.scripts;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.obsqura.pages.BrandPage;
 import com.obsqura.pages.InvoiceSettingsPage;
 import com.obsqura.pages.LoginPage;
-
+@Listeners(com.obsqura.listners.TestNGListerner.class)
 public class InvoiceSettingsPageTest extends TestHelper{
 @Test
 public void verifyUserCanAddNewInvoiceSettings() {
@@ -16,11 +17,7 @@ public void verifyUserCanAddNewInvoiceSettings() {
 	brandpge.closeEndtour();
 	InvoiceSettingsPage invoicepge=new InvoiceSettingsPage(driver);
 	invoicepge.addNewInvoiceSetting();
-	if (invoicepge.successmessage.isDisplayed()) {
-		Assert.assertTrue(true);
-	} else {
-		Assert.assertTrue(false);
-	}
-}
-}
+	Assert.assertTrue (invoicepge.successmessage.isDisplayed());
+		
+}}
 

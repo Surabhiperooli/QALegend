@@ -1,12 +1,13 @@
 package com.obsquara.scripts;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.obsqura.pages.LoginPage;
 import com.obsqura.pages.UnitsPage;
-
-public class UnitTestPage extends TestHelper {
+@Listeners(com.obsqura.listners.TestNGListerner.class)
+public class Unitspagetest extends TestHelper {
 @Test
 public void verifyUsesrCanAddNewUnit() {
 	LoginPage loginpage = new LoginPage(driver);
@@ -14,11 +15,8 @@ public void verifyUsesrCanAddNewUnit() {
 	UnitsPage unitp=new UnitsPage(driver);
 	unitp.closeEndtour();
 	unitp.addNewUnit();
-	if (unitp.message.isDisplayed()) {
-		Assert.assertTrue(true);
-	} else {
-		Assert.assertTrue(false);
-	}
+	Assert.assertTrue(unitp.message.isDisplayed()); 
+		
 
 }
 }

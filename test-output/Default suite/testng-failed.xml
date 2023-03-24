@@ -7,7 +7,6 @@
         <methods>
           <include name="verifyTheUserCanDeleteRole"/>
           <include name="launchbrowser"/>
-          <include name="closeBrowser"/>
         </methods>
       </class> <!-- com.obsquara.scripts.RolesPageTest -->
     </classes>

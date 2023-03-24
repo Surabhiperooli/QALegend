@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-21T20:08:43 CST" name="Suite" finished-at="2023-03-21T20:09:34 CST" duration-ms="50916">
+  <suite started-at="2023-03-24T17:12:00 CST" name="Suite" finished-at="2023-03-24T17:12:23 CST" duration-ms="23656">
     <groups>
     </groups>
-    <test started-at="2023-03-21T20:08:43 CST" name="Test" finished-at="2023-03-21T20:09:34 CST" duration-ms="50916">
-      <class name="com.obsquara.scripts.InvoiceSettingsPageTest">
-        <test-method is-config="true" signature="launchbrowser(java.lang.String)[pri:0, instance:com.obsquara.scripts.InvoiceSettingsPageTest@2dde1bff]" started-at="2023-03-21T20:08:44 CST" name="launchbrowser" finished-at="2023-03-21T20:09:08 CST" duration-ms="23862" status="PASS">
+    <test started-at="2023-03-24T17:12:00 CST" name="Test" finished-at="2023-03-24T17:12:23 CST" duration-ms="23656">
+      <class name="com.obsquara.scripts.CategoryPageTest">
+        <test-method is-config="true" signature="launchbrowser(java.lang.String)[pri:0, instance:com.obsquara.scripts.CategoryPageTest@5f9b2141]" started-at="2023-03-24T17:12:00 CST" name="launchbrowser" finished-at="2023-03-24T17:12:13 CST" duration-ms="13114" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchbrowser -->
-        <test-method signature="verifyUserCanAddNewInvoiceSettings()[pri:0, instance:com.obsquara.scripts.InvoiceSettingsPageTest@2dde1bff]" started-at="2023-03-21T20:09:08 CST" name="verifyUserCanAddNewInvoiceSettings" finished-at="2023-03-21T20:09:34 CST" duration-ms="26558" status="PASS">
+        <test-method signature="verifyUserCanAddNewCategories()[pri:0, instance:com.obsquara.scripts.CategoryPageTest@5f9b2141]" started-at="2023-03-24T17:12:13 CST" name="verifyUserCanAddNewCategories" finished-at="2023-03-24T17:12:23 CST" duration-ms="9846" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUserCanAddNewInvoiceSettings -->
-      </class> <!-- com.obsquara.scripts.InvoiceSettingsPageTest -->
+        </test-method> <!-- verifyUserCanAddNewCategories -->
+      </class> <!-- com.obsquara.scripts.CategoryPageTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

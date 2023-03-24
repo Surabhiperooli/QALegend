@@ -12,6 +12,7 @@ import com.obsqura.utiities.WaitUtilities;
 public class UnitsPage {
 	WebDriver driver;
 	WaitUtilities waitu=new WaitUtilities();
+	
 	@FindBy(xpath="//span[text()='Products']")
 	WebElement products;
 	@FindBy(xpath = "//button[text()='End tour']")
@@ -30,28 +31,30 @@ public class UnitsPage {
 	WebElement save;
 	@FindBy(xpath="//div[@class='toast-message']")
 	public WebElement message;
+	
+	
 	public UnitsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-		public void closeEndtour() {
-			endtour.click();
-		}
-		public void addNewUnit() {
-			waitu.hardSleep(5000);
-			products.click();
-			units.click();
-			addUnits.click();
-			unitName.sendKeys(Constants.UNIT_NAME);
-			unitShortName.sendKeys(Constants.UNIT_NAME);
-			allowdecimal.click();
-			Select select=new Select(allowdecimal);
-			select.selectByVisibleText("Yes");
-			save.click();
-			waitu.hardSleep(5000);
-			message.isDisplayed();
-			
-		}
-		
+
+	public void closeEndtour() {
+		endtour.click();
 	}
 
+	public void addNewUnit() {
+		products.click();
+		units.click();
+		addUnits.click();
+		waitu.waitforelementtobeClickable(driver, unitName);
+		unitName.sendKeys(Constants.UNIT_NAME);
+		unitShortName.sendKeys(Constants.UNIT_NAME);
+		allowdecimal.click();
+		Select select = new Select(allowdecimal);
+		select.selectByVisibleText("Yes");
+		save.click();
+		message.isDisplayed();
+
+	}
+
+}

@@ -27,7 +27,7 @@ public class HomepageTest extends TestHelper {
 
 
 
-	 @Test
+	@Test
 	public void verifyWelcomeMessageShowingAsExpected() {
 
 		LoginPage loginpage = new LoginPage(driver);
@@ -35,11 +35,8 @@ public class HomepageTest extends TestHelper {
 		Homepage homepage = new Homepage(driver);
 		homepage.closeEndtour();
 		boolean status = homepage.iswelcomemsgHomepageShowing();
-		if (status) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
-		}
+		Assert.assertTrue(status) ;
+			
 	}
 
 	
@@ -51,14 +48,8 @@ public class HomepageTest extends TestHelper {
 		Homepage homepage = new Homepage(driver);
 		homepage.closeEndtour();
 		homepage.calculatordisplaying();
-		if (homepage.calculatordisplay.isDisplayed()) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
-		}
-
-
-	}
+		Assert.assertTrue(homepage.calculatordisplay.isDisplayed()); 
+			}
 
 	@Test(retryAnalyzer=com.obsqura.listners.RetryAnalyzer.class)
 	public void verifyTodaysProfitMessageDisplayingWhileClickingOnTodaysProfitIcon() {
@@ -67,15 +58,12 @@ public class HomepageTest extends TestHelper {
 		Homepage homepage = new Homepage(driver);
 		homepage.closeEndtour();
 		homepage.todaysProfitPopUpMessage();
-		if (homepage.todaysprofitmessagedisplay.isDisplayed()) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
-		}
+		Assert.assertTrue(homepage.todaysprofitmessagedisplay.isDisplayed()) ;
+		
 
 	}
 
-	 @Test
+	@Test
 	public void verifyNotificationmessageShowingUponClickingBellButton() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithInvalidLoginCredentials("admin", "123456");

@@ -9,14 +9,13 @@ import org.openqa.selenium.support.ui.Select;
 
 public class PageUtilities{
 	WebDriver driver;
-	public void sendKeystotextfieldMethod1(WebElement element,String text) {//elemnt on which weblement we are going to do the sendkeys
-		element.click();
-		element.clear();//if theold entered text is present there we have to clear it
+	public void clearAndEnterText(WebElement element,String text) {
+		element.clear();
 	element.sendKeys(text);
 	}
-	public void sendKeystotextfieldMethod2(WebElement element,CharSequence[] i) {//elemnt on which weblement we are going to do the sendkeys
+	public void clearAndEnterText(WebElement element,CharSequence[] i) {
 		element.click();
-		element.clear();//if theold entered text is present there we have to clear it
+		element.clear();
 	element.sendKeys(i);
 	}
 	public void selecttextfromDropdownList(WebElement element,String text) {
@@ -28,8 +27,8 @@ public class PageUtilities{
 	{
 		driver.switchTo().alert().accept();
 	}
-	public void dismissingAlert(WebDriver driver)
-	{
+
+	public void dismissingAlert(WebDriver driver) {
 		driver.switchTo().alert().dismiss();
 	}
 	public void mouseHoverInElements(WebElement element) {

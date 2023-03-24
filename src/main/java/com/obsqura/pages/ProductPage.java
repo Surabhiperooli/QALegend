@@ -24,7 +24,7 @@ public class ProductPage {
 	@FindBy(xpath = "//div[@id='product_list_tab']")
 	WebElement firstsetofproducts;
 	@FindBy(xpath = "//input[@id='select-all-row']")
-	WebElement chooseallcheckbox;
+	WebElement selectallcheckbox;
 	@FindBy(xpath = "//*[@id=\"product_list_tab\"]")
 	public WebElement productlist;
 	@FindBy(xpath = "//input[@id='deactivate-selected']")
@@ -87,11 +87,11 @@ public class ProductPage {
 	public boolean deactiveSelectedWarningMessage() {
 		productsdrowpdown.click();
 		listproducts.click();
-		waitu.hardSleep(3000);
-		chooseallcheckbox.click();
+		waitu.waitforelementtobeClickable(driver, selectallcheckbox);
+		selectallcheckbox.click();
 		deactivateselected.click();
-		waitu.hardSleep(3000);
 		warningmessageok.click();
+		System.out.println(deactivatedtoastmessage.isDisplayed());
 		return deactivatedtoastmessage.isDisplayed();
 	}
 
@@ -100,21 +100,18 @@ public class ProductPage {
 		productsdrowpdown.click();
 		listproducts.click();
 		addproduct.click();
-		waitu.hardSleep(5000);
-		pageu.sendKeystotextfieldMethod1(proname,productname );
+		pageu.clearAndEnterText(proname,productname );
 		clickunit.click();
-		waitu.hardSleep(2000);
-		pageu.sendKeystotextfieldMethod1(unitelementtypefield,unit+Keys.ENTER);
+		pageu.clearAndEnterText(unitelementtypefield,unit+Keys.ENTER);
 		clickbarcode.click();
-		waitu.hardSleep(3000);
-		pageu.sendKeystotextfieldMethod1(barcodeelement,barcode+Keys.ENTER);
-		pageu.sendKeystotextfieldMethod1(alertqty,alertquantity);
+		pageu.clearAndEnterText(barcodeelement,barcode+Keys.ENTER);
+		pageu.clearAndEnterText(alertqty,alertquantity);
 		sellingpricetax.click();
 		exclusive.click();
 		producttype.click();
 		single.click();
-		pageu.sendKeystotextfieldMethod1(exctaxelement,exctax+Keys.ENTER);
-		pageu.sendKeystotextfieldMethod1(inctaxelement,inctax+Keys.ENTER);
+		pageu.clearAndEnterText(exctaxelement,exctax+Keys.ENTER);
+		pageu.clearAndEnterText(inctaxelement,inctax+Keys.ENTER);
 		savebutton.click();
 		success.isDisplayed();
 		}

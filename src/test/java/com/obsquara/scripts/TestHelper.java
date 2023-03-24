@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -30,23 +31,23 @@ public class TestHelper {
 	@BeforeMethod
 	@Parameters({ "browser" })
 	public void launchbrowser(String browser) {
+		
 		readConfig();
+		
 		if (browser.equalsIgnoreCase("Chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-		} else if (browser.equalsIgnoreCase("Edge")) {
-			// setting system properties of EdgeDriver
-			System.setProperty("webdriver.edge.driver", "C:\\Tools\\Webdriver_Edge\\108\\msedgedriver.exe");
-
-			driver = new EdgeDriver();
+		} else if (browser.equalsIgnoreCase("InternetExplorer")) {
+			WebDriverManager.iedriver().setup();
+			driver = new InternetExplorerDriver();
 
 		} else if (browser.equalsIgnoreCase("Firefox")) {
 			System.setProperty("webdriver.gecko.driver", "C:\\Tools\\Webdriver_Firefox\\geckodriver.exe");
-
 			driver = new FirefoxDriver();
 
 		}
 
+		
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("url"));
 		// driver.get("https://qalegend.com/billing/public/login");
@@ -59,36 +60,34 @@ public class TestHelper {
 
 		if (ITestResult.FAILURE == result.getStatus()) {
 
-		try {
+			try {
 
-		TakesScreenshot screenshot = (TakesScreenshot) driver;
+				TakesScreenshot screenshot = (TakesScreenshot) driver;
 
-		File src = screenshot.getScreenshotAs(OutputType.FILE);
+				File src = screenshot.getScreenshotAs(OutputType.FILE);
 
-		FileUtils.copyFile(src, new File(Constants.SCREENSHOT_PATH + result.getName() + ".png"));
+				FileUtils.copyFile(src, new File(Constants.SCREENSHOT_PATH + result.getName() + ".png"));
 
-		System.out.println("Successfully captured a screenshot");
+				System.out.println("Successfully captured a screenshot");
 
-		} catch (Exception e) {
+			} catch (Exception e) {
 
-		System.out.println("Exception while taking screenshot " + e.getMessage());
+				System.out.println("Exception while taking screenshot " + e.getMessage());
 
-		}
+			}
 
 		}
 
 		driver.close();
 
-		}
-
+	}
 
 	public void readConfig() {
 		try {
 			prop = new Properties();
 			FileInputStream fis;
-
-			fis = new FileInputStream(
-					"C:\\Users\\Surabhi\\eclipse-workspace\\FIRSTQALEGENDPROJECT\\Configuration\\config.properties");
+            fis = new FileInputStream(System.getProperty("user.dir")
+					+ "\\src\\main\\resources\\com\\obsquara\\configuration\\config.properties");
 			prop.load(fis);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

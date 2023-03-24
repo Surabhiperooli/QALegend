@@ -7,14 +7,9 @@
   <test thread-count="4" parallel="classes" name="Test">
 	  <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="com.obsquara.scripts.RolesPageTest"/>
-      <class name="com.obsquara.scripts.ProductPageTest"/>
-      <class name="com.obsquara.scripts.HomepageTest"/>
-      <class name="com.obsquara.scripts.Userpagetest"/>
+      <class name="com.obsquara.scripts.Unitspagetest"/>
       <class name="com.obsquara.scripts.TaxRatePageTest"/>
-      <class name="com.obsquara.scripts.ProfilepageTest"/>
-      <class name="com.obsquara.scripts.LoginPageTest"/>
-      <class name="com.obsquara.scripts.CustomerpageTest"/>
+       <class name="com.obsquara.scripts.InvoiceSettingsPageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

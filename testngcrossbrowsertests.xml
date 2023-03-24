@@ -4,29 +4,19 @@
 	<listeners>
 <listener class-name="com.obsqura.listners.TestNGListerner"/>
 </listeners>
-  <test thread-count="5" name="Test">
+  <test thread-count="5" name="Test1">
 	  <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="com.obsquara.scripts.RolesPageTest"/>
-      <class name="com.obsquara.scripts.ProductPageTest"/>
-      <class name="com.obsquara.scripts.HomepageTest"/>
-      <class name="com.obsquara.scripts.Userpagetest"/>
-      <class name="com.obsquara.scripts.ProfilepageTest"/>
-      <class name="com.obsquara.scripts.LoginPageTest"/>
-      <class name="com.obsquara.scripts.CustomerpageTest"/>
+      <class name="com.obsquara.scripts.Unitspagetest"/>
+      
     </classes>
   </test> <!-- Test -->
   
   <test thread-count="5" name="Test2">
 	  <parameter name="browser" value="Firefox"/>
     <classes>
-      <class name="com.obsquara.scripts.RolesPageTest"/>
-      <class name="com.obsquara.scripts.ProductPageTest"/>
-      <class name="com.obsquara.scripts.HomepageTest"/>
-      <class name="com.obsquara.scripts.Userpagetest"/>
-      <class name="com.obsquara.scripts.ProfilepageTest"/>
-      <class name="com.obsquara.scripts.LoginPageTest"/>
-      <class name="com.obsquara.scripts.CustomerpageTest"/>
+    <class name="com.obsquara.scripts.Unitspagetest"/>
+     
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -36,13 +36,14 @@ public class Expensepage {
 		@FindBy(xpath="//input[@id='code']") WebElement categorycode;
 		@FindBy(xpath="//button[text()='Save']") WebElement savecategory;
 		@FindBy(xpath="//*[@id=\"toast-container\"]/div/div")public WebElement categoryaddedmessage;
+		
+		
 		public Expensepage(WebDriver driver) { 					 
 			this.driver=driver;
 			PageFactory.initElements(driver, this);				 
 		}
 		
 		public boolean addExpenses() {
-			waitu.hardSleep(3000);
 			expenses.click();
 			addExpenses.click();
 			Select select=new Select(businessLocation);
@@ -55,15 +56,12 @@ public class Expensepage {
 		}
 		public void addexpensecategory()
 		{
-			waitu.hardSleep(3000);
 			expenses.click();
 			expensecategory.click();
-			waitu.hardSleep(3000);
 			add.click();
-			pageu.sendKeystotextfieldMethod1(categoryname, Constants.CATEGORY_NAME);
-			pageu.sendKeystotextfieldMethod1(categorycode, Constants.CATEGORY_CODE);
+			pageu.clearAndEnterText(categoryname, Constants.CATEGORY_NAME);
+			pageu.clearAndEnterText(categorycode, Constants.CATEGORY_CODE);
 			savecategory.click();
-			waitu.hardSleep(3000);
 			categoryaddedmessage.isDisplayed();
 			
 		}

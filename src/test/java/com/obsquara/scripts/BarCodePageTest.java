@@ -1,12 +1,13 @@
 package com.obsquara.scripts;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.obsqura.pages.BarCodePage;
 import com.obsqura.pages.Homepage;
 import com.obsqura.pages.LoginPage;
-
+@Listeners(com.obsqura.listners.TestNGListerner.class)
 public class BarCodePageTest extends TestHelper {
 @Test(priority=1)
 public void verifyUserCanAddNewBarCodeToProducts() {
@@ -16,11 +17,8 @@ public void verifyUserCanAddNewBarCodeToProducts() {
 	homepage.closeEndtour();
 	BarCodePage barcodepge=new BarCodePage(driver);
 	barcodepge.addNewBarcode();
-	if (barcodepge.successmessage.isDisplayed()) {
-		Assert.assertTrue(true);
-	} else {
-		Assert.assertTrue(false);
-	}
+	Assert.assertTrue(barcodepge.successmessage.isDisplayed());
+	
 }
 @Test(priority=2)
 public void verifyUserCanDeleteBarCodeS() {
@@ -30,9 +28,6 @@ public void verifyUserCanDeleteBarCodeS() {
 	homepage.closeEndtour();
 	BarCodePage barcodepge=new BarCodePage(driver);
 	barcodepge.deleteBarCode();
-	if (barcodepge.detetedtoastmessage.isDisplayed()) {
-		Assert.assertTrue(true);
-	} else {
-		Assert.assertTrue(false);
-	}
+	Assert.assertTrue(barcodepge.detetedtoastmessage.isDisplayed());
+	
 }}

@@ -7,12 +7,12 @@
   <test thread-count="5" name="Test(failed)">
     <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="com.obsquara.scripts.InvoiceSettingsPageTest">
+      <class name="com.obsquara.scripts.RolesPageTest">
         <methods>
+          <include name="verifyTheUserCanDeleteRole"/>
           <include name="launchbrowser"/>
-          <include name="verifyUserCanAddNewInvoiceSettings"/>
         </methods>
-      </class> <!-- com.obsquara.scripts.InvoiceSettingsPageTest -->
+      </class> <!-- com.obsquara.scripts.RolesPageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

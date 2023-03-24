@@ -52,9 +52,8 @@ public class LoginPage {
 		password.sendKeys(paswrd);
 		login.click();
 		endtour.click();
-		waitu.hardSleep(5000);
+		waitu.hardSleep(2000);
 		profile.click();
-		waitu.hardSleep(6000);
 		signout.click();
 		String title = driver.getTitle();
 		return title;

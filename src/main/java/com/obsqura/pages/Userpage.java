@@ -72,7 +72,7 @@ public class Userpage {
 	WebElement deletebutton;
 	@FindBy(xpath = "//div[@class='swal-modal']")
 	WebElement dialogbox;
-	@FindBy(xpath = "//button[@class=\"swal-button swal-button--confirm swal-button--danger\"]")
+	@FindBy(xpath = "//button[text()='OK']")
 	WebElement okbutton;
 	@FindBy(xpath = "//*[@class='toast-message']")
 	public WebElement delmsg;
@@ -96,60 +96,46 @@ public class Userpage {
 		PageFactory.initElements(driver, this);
 	}
 
-	
 	public void endtour() {
 		endtour.click();
 	}
 
-	
-
-	
-
-	public boolean addnewUserfunction(String surnme, String frstnme, String lstnme, String email,
-			String paswd, String confrmpaswd) {
+	public boolean addnewUserfunction(String surnme, String frstnme, String lstnme, String email, String paswd,
+			String confrmpaswd) {
 
 		usermanagement.click();
-		waitu.hardSleep(5000);
 		useroption.click();
 		addoptiontext.click();
-		pageu.sendKeystotextfieldMethod1(surnamefield, surnme);
-		pageu.sendKeystotextfieldMethod1(firstnamefield, frstnme);
-		pageu.sendKeystotextfieldMethod1(lastnamefield, lstnme);
-		pageu.sendKeystotextfieldMethod1(emailfield, email);
-		waitu.hardSleep(5000);
+		pageu.clearAndEnterText(surnamefield, surnme);
+		pageu.clearAndEnterText(firstnamefield, frstnme);
+		pageu.clearAndEnterText(lastnamefield, lstnme);
+		pageu.clearAndEnterText(emailfield, email);
 		roles.click();
-		pageu.sendKeystotextfieldMethod1(roleselectionfield, Constants.ROLE+Keys.ENTER);
-		waitu.hardSleep(5000);
-		pageu.sendKeystotextfieldMethod1(passwordfield, paswd);
-		pageu.sendKeystotextfieldMethod1(passwordconfirmfield, confrmpaswd);
+		pageu.clearAndEnterText(roleselectionfield, Constants.ROLE + Keys.ENTER);
+		pageu.clearAndEnterText(passwordfield, paswd);
+		pageu.clearAndEnterText(passwordconfirmfield, confrmpaswd);
 		savebutton.click();
-		waitu.hardSleep(3000);
 		System.out.println(successmessage.isDisplayed());
 		return successmessage.isDisplayed();
 	}
 
 	public void userDeleteFunctionWorking(String usrnmee) {
 		usermanagement.click();
-		waitu.hardSleep(5000);
 		useroption.click();
-		pageu.sendKeystotextfieldMethod1(searchbutton, Constants.NEWUSER_NAME);
-		waitu.hardSleep(5000);
+		pageu.clearAndEnterText(searchbutton, Constants.NEWUSER_NAME);
 		deletebutton.click();
-		waitu.hardSleep(5000);
-        okbutton.click();
-        waitu.hardSleep(5000);
+		okbutton.click();
 		System.out.println(delmsg.isDisplayed());
-		}
+	}
 
-		public void viewUserOption() {
-			usermanagement.click();
-			waitu.hardSleep(3000);
-			useroption.click();
-			viewuser.click();
-			String title = driver.getTitle();
-			System.out.println(title);
-			System.out.println(viewusercontent.isDisplayed());
-
-		}
+	public void viewUserOption() {
+		usermanagement.click();
+		useroption.click();
+		viewuser.click();
+		String title = driver.getTitle();
+		System.out.println(title);
+		System.out.println(viewusercontent.isDisplayed());
 
 	}
+
+}

@@ -4,12 +4,13 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.obsqura.pages.BrandPage;
 import com.obsqura.pages.Homepage;
 import com.obsqura.pages.LoginPage;
-
+@Listeners(com.obsqura.listners.TestNGListerner.class)
 public class BrandpageTest extends TestHelper {
 
 	@Test(dataProvider = "BrandData")
@@ -19,11 +20,7 @@ public class BrandpageTest extends TestHelper {
 		BrandPage brandpge = new BrandPage(driver);
 		brandpge.closeEndtour();
 		brandpge.addaNewBrand(brndnme, descrptn);
-		if (brandpge.successmessage.isDisplayed()) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
-		}
+		Assert.assertTrue(brandpge.successmessage.isDisplayed()) ;
 
 	}
 

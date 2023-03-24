@@ -44,7 +44,7 @@ public class RolesPage {
 	public WebElement searchdata;
 	@FindBy(xpath="//button[text()=' Delete']")
 	WebElement delete;
-	@FindBy(xpath="/html/body/div[4]/div/div[4]/div[2]/button")
+	@FindBy(xpath="//button[text()='OK']")
 	WebElement deleteok;
 	@FindBy(xpath="//td[@class='dataTables_empty']")
 	public WebElement searchdatadeletemsg;
@@ -61,9 +61,9 @@ public class RolesPage {
 		roles.click();
 		add.click();
 		rolename.click();
-		pageu.sendKeystotextfieldMethod1(rolename, Constants.NEWROLE);
+		pageu.clearAndEnterText(rolename, Constants.NEWROLE);
 		save.click();
-		pageu.sendKeystotextfieldMethod1(searchrole,Constants.NEWROLE);
+		pageu.clearAndEnterText(searchrole,Constants.NEWROLE);
 		boolean status=searchdata.isDisplayed();
 		System.out.println(searchdata.isDisplayed());
 		
@@ -71,13 +71,10 @@ public class RolesPage {
 	public void deleteRole(String newrole) {
 		dropdownbutton.click();
 		roles.click();
-		waitu.hardSleep(5000);
-		pageu.sendKeystotextfieldMethod1(searchrole, Constants.NEWROLE);
-		waitu.hardSleep(3000);
+		pageu.clearAndEnterText(searchrole, Constants.NEWROLE);
 		delete.click();
-		waitu.hardSleep(3000);
 		deleteok.click();
-		pageu.sendKeystotextfieldMethod1(searchrole, Constants.NEWROLE);
+		pageu.clearAndEnterText(searchrole, Constants.NEWROLE);
 		searchdatadeletemsg.isDisplayed();
 		System.out.println(searchdatadeletemsg.isDisplayed());
 	}

@@ -40,13 +40,11 @@ public class TaxRatePage {
 	}
 
 	public boolean addNewTaxRate(String nme, String tax) {
-		waitu.hardSleep(3000);
 		settingsdropdown.click();
 		taxrates.click();
-		waitu.hardSleep(3000);
 		addbutton.click();
-		pageu.sendKeystotextfieldMethod1(namefield, nme);
-		pageu.sendKeystotextfieldMethod1(taxratefield, tax);
+		pageu.clearAndEnterText(namefield, nme);
+		pageu.clearAndEnterText(taxratefield, tax);
 		savebutton.click();
 		System.out.println(successmessage.isDisplayed());
 		return successmessage.isDisplayed();

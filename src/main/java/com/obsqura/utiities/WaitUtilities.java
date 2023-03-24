@@ -24,10 +24,10 @@ public class WaitUtilities {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(waitTimeInSeconds));
 	}
 
-	public void waitforelementtobeClickable(WebDriver driver,String locator) {
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+	public void waitforelementtobeClickable(WebDriver driver,WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(50));
 
-		 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+		 wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
 	// IT is the expectation for checking that an element is present on the DOM of a
@@ -44,10 +44,10 @@ public class WaitUtilities {
 	// page and visible.
 	// Visibility means that the element is not only displayed but also has a height
 	// and width that is greater than 0.
-	public void waitUntilElementIsDisplayedOnScreen(WebDriver driver,String locator) {
+	public void waitUntilElementIsDisplayedOnScreen(WebDriver driver,WebElement element) {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+		wait.until(ExpectedConditions.visibilityOfElementLocated((By) element));
 	
 	}
 

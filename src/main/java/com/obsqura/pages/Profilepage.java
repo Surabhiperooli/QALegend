@@ -20,6 +20,7 @@ public class Profilepage extends com.obsqura.utiities.PageUtilities{
 	WebDriver driver;
 	PageUtilities pageu=new PageUtilities();
 	WaitUtilities waitu=new WaitUtilities();
+	
 	@FindBy(xpath="/html/body/div[2]/header/nav/div/ul/li[2]/a/span")
 	WebElement profiletitle;
 	@FindBy(xpath="//a[text()='Profile']")
@@ -82,9 +83,8 @@ public class Profilepage extends com.obsqura.utiities.PageUtilities{
 		email.click();
 		email.sendKeys(emailid);
 		languagedropdown.click();
-		pageu.sendKeystotextfieldMethod1(languagefield,Constants.language+Keys.ENTER );
+		pageu.clearAndEnterText(languagefield,Constants.language+Keys.ENTER );
 		updateprofile.click();
-		waitu.hardSleep(5000);
 		successmessage.isDisplayed();
 	}
 

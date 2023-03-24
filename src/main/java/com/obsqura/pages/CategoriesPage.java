@@ -13,30 +13,35 @@ public class CategoriesPage {
 	WebDriver driver;
 	WaitUtilities waitu = new WaitUtilities();
 	PageUtilities pageu=new PageUtilities();
-	@FindBy(xpath ="//a[@id='tour_step5_menu']")WebElement products;
-	@FindBy(xpath ="//span[text()='Categories ']")WebElement catogeries;
-	@FindBy(xpath ="//button[text()=' Add']")WebElement add;
-	@FindBy(xpath ="//input[@id='name']")WebElement categorynamefield;
-	@FindBy(xpath ="//input[@id='short_code']")WebElement categorycode;
-	@FindBy(xpath ="//button[text()='Save']")WebElement savebutton;
-	@FindBy(xpath ="//*[@id=\"toast-container\"]/div/div")public WebElement successmessage;
+	@FindBy(xpath ="//a[@id='tour_step5_menu']")
+	WebElement products;
+	@FindBy(xpath ="//span[text()='Categories ']")
+	WebElement catogeries;
+	@FindBy(xpath ="//button[text()=' Add']")
+	WebElement add;
+	@FindBy(xpath ="//input[@id='name']")
+	WebElement categorynamefield;
+	@FindBy(xpath ="//input[@id='short_code']")
+	WebElement categorycode;
+	@FindBy(xpath ="//button[text()='Save']")
+	WebElement savebutton;
+	@FindBy(xpath ="//*[@id=\"toast-container\"]/div/div")
+	public WebElement successmessage;
 	
 	public CategoriesPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void addNewCategories() {
-		waitu.hardSleep(3000);
+	public boolean addNewCategories() {
 		products.click();
 		catogeries.click();
-		waitu.hardSleep(3000);
 		add.click();
-		pageu.sendKeystotextfieldMethod1(categorynamefield,Constants.CATEGORY_NAME );
-		pageu.sendKeystotextfieldMethod1(categorycode, Constants.CATEGORY_CODE);
+		pageu.clearAndEnterText(categorynamefield,Constants.CATEGORY_NAME );
+		pageu.clearAndEnterText(categorycode, Constants.CATEGORY_CODE);
 		savebutton.click();
-		waitu.hardSleep(3000);
-		successmessage.isDisplayed();
+		System.out.println(successmessage.isDisplayed());
+		return successmessage.isDisplayed();
 		
 	}
 }

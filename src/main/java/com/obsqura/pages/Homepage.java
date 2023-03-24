@@ -89,7 +89,7 @@ public class Homepage {
 	}
 
 	public boolean calculatordisplaying() {
-		waitu.hardSleep(5000);
+		waitu.waitforelementtobeClickable(driver, calculator);
 		calculator.click();
 		System.out.println(calculatordisplay.isDisplayed());
 		return calculatordisplay.isDisplayed();
@@ -97,7 +97,7 @@ public class Homepage {
 	}
 
 	public String notificationshowing() {
-		waitu.hardSleep(5000);
+		
 		bellbutton.click();
         notification = notificationmessage.getAttribute("innerText");
 		return notification;
@@ -105,17 +105,11 @@ public class Homepage {
 	}
 
 	public boolean todaysProfitPopUpMessage() {
-		waitu.hardSleep(3000);
+		waitu.waitforelementtobeClickable(driver,todaysprofitmessagebutton );
 		todaysprofitmessagebutton.click();
-		waitu.hardSleep(5000);
 		System.out.println(todaysprofitmessagedisplay.isDisplayed());
         return todaysprofitmessagedisplay.isDisplayed();
 	}
 
-	public void purchaseDetailsPrint() {
-		referencenumber.click();
-		printbutton.click();
-		waitu.hardSleep(5000);
-		finalprintbutton.click();
-	}
+	
 }

@@ -1,18 +1,16 @@
 package com.obsquara.scripts;
 
-import java.time.Duration;
-
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.obsqura.constants.Constants;
 import com.obsqura.pages.Homepage;
 import com.obsqura.pages.LoginPage;
 import com.obsqura.pages.Profilepage;
-
-import excelutiities.NewExcelLibrary;
-
+import com.obsqura.utiities.ExcelUtilities;
+@Listeners(com.obsqura.listners.TestNGListerner.class)
 public class ProfilepageTest extends TestHelper {
 	
 	
@@ -38,25 +36,22 @@ public class ProfilepageTest extends TestHelper {
 	    profile.profilepageloading();
 	    profile.editprofile();
 	    profile.editprofilefn(surnme,fstnme,lstnme,emailid);
-	   if (profile.successmessage.isDisplayed()) {
-		Assert.assertTrue(true);
-	   } else {
-		Assert.assertTrue(false);
-	  }
+	    Assert.assertTrue(profile.successmessage.isDisplayed());
+		
 }
 	
 	
 	@DataProvider(name="profiledata")
 	public Object[][] getInValidData() throws Throwable {
 		
-		String path =Constants.EXCEL_FILE_PATH +"\\NewProfileData.xlsx";
-        NewExcelLibrary lib = new NewExcelLibrary(path);
-		int totalrows = lib.getRowCount("Sheet1");
-		int totalcols = lib.getCellCount("Sheet1", 1);
+		String path =Constants.EXCEL_FILE_PATH;
+		ExcelUtilities excelu= new ExcelUtilities (path);
+		int totalrows = excelu.getRowCount("Newprofiledata");
+		int totalcols = excelu.getCellCount("Newprofiledata", 1);
 		String profileDatas[][] = new String[totalrows][totalcols];
 		for (int i = 1; i <= totalrows; i++) {
 			for (int j = 0; j < totalcols; j++) {
-				profileDatas[i - 1][j] = lib.getCellData("Sheet1", i, j);
+				profileDatas[i - 1][j] = excelu.getCellData("Newprofiledata", i, j);
 			}
 
 		}
