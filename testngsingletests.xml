@@ -7,7 +7,8 @@
   <test thread-count="5" name="Test">
 	  <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="com.obsquara.scripts.CategoryPageTest"/>
+      <class name="com.obsquara.scripts.BarCodePageTest"/> 
+      <class name="com.obsquara.scripts.CustomerpageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

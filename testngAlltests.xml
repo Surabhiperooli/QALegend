@@ -8,6 +8,7 @@
 	  <parameter name="browser" value="Chrome"/>  
     <classes>
       <class name="com.obsquara.scripts.RolesPageTest"/>
+      <class name="com.obsquara.scripts.StockAdjustmentPageTest"/>
       <class name="com.obsquara.scripts.BrandpageTest"/>
       <class name="com.obsquara.scripts.ProductPageTest"/>
       <class name="com.obsquara.scripts.Userpagetest"/>

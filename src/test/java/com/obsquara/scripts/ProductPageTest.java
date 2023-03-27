@@ -12,25 +12,23 @@ import com.obsqura.pages.ProductPage;
 import com.obsqura.utiities.ExcelUtilities;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class ProductPageTest extends TestHelper {
-	
-	
-	@Test(dataProvider = "newproductData")
+		
+	@Test(groups={"Regression"},dataProvider = "newproductData")
 	public void verifyWhethertheUserCaNAddNewProduct(String productname, String unit, String barcode,
-			String alertquantity, String exctax, String inctax) {
+		String alertquantity, String exctax, String inctax) {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithInvalidLoginCredentials("admin", "123456");
 		Homepage homepage = new Homepage(driver);
 		homepage.closeEndtour();
 		ProductPage productpage = new ProductPage(driver);
-		productpage.addnewProduct(productname, unit, barcode, alertquantity, exctax, inctax);
-		Assert.assertTrue(productpage.success.isDisplayed()) ;
+		Assert.assertEquals(productpage.addnewProduct(productname, unit, barcode, alertquantity, exctax, inctax),"Product added successfully");
 			
 	}
 
 	@DataProvider(name = "newproductData")
 	public Object[][] getInValidUsername() throws Throwable {
 		String path = Constants.EXCEL_FILE_PATH;
-		ExcelUtilities  excelu = new ExcelUtilities (path);
+		ExcelUtilities excelu=new ExcelUtilities(path);
 		int totalrows = excelu.getRowCount("Newproductdata");
 		int totalcols = excelu.getCellCount("Newproductdata", 1);
 		String getnewproductdata[][] = new String[totalrows][totalcols];
@@ -42,5 +40,6 @@ public class ProductPageTest extends TestHelper {
 		}
 		return getnewproductdata;
 	}
+	
 
 }

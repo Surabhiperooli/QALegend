@@ -13,6 +13,7 @@ public class CategoriesPage {
 	WebDriver driver;
 	WaitUtilities waitu = new WaitUtilities();
 	PageUtilities pageu=new PageUtilities();
+	
 	@FindBy(xpath ="//a[@id='tour_step5_menu']")
 	WebElement products;
 	@FindBy(xpath ="//span[text()='Categories ']")
@@ -33,15 +34,16 @@ public class CategoriesPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public boolean addNewCategories() {
+	public String addNewCategories() {
 		products.click();
 		catogeries.click();
 		add.click();
 		pageu.clearAndEnterText(categorynamefield,Constants.CATEGORY_NAME );
 		pageu.clearAndEnterText(categorycode, Constants.CATEGORY_CODE);
 		savebutton.click();
-		System.out.println(successmessage.isDisplayed());
-		return successmessage.isDisplayed();
+		String displaymessage=successmessage.getAttribute("innerText");
+		System.out.println(displaymessage);
+		return displaymessage;
 		
 	}
 }

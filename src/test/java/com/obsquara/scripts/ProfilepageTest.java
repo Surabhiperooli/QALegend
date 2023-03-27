@@ -1,7 +1,6 @@
 package com.obsquara.scripts;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -13,48 +12,38 @@ import com.obsqura.utiities.ExcelUtilities;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class ProfilepageTest extends TestHelper {
 	
-	
-	@Test
+	 
+	@Test(groups = {"Regression" })
+
 	public void IsProfilePageLoadedSuccesfully() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials("admin", "123456");
 		Homepage homepage = new Homepage(driver);
 		homepage.closeEndtour();
 	    Profilepage profile=new Profilepage(driver);
-	    profile.profilepageloading();
-	    Assert.assertTrue(profile.profilepageloading());
+	    profile.profilePageLoading();
+	    Assert.assertTrue(profile.profilePageLoading());
 	}
 	
 	
-	@Test(dataProvider="profiledata")
-	public void verifyUserCanEditProfile(String surnme,String fstnme,String lstnme,String emailid) {
+	@Test(groups = {"Regression" })
+
+	public void verifyUserCanEditProfile() throws Throwable{
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials("admin", "123456");
 		Homepage homepage = new Homepage(driver);
 		homepage.closeEndtour();
-	    Profilepage profile=new Profilepage(driver);	
-	    profile.profilepageloading();
-	    profile.editprofile();
-	    profile.editprofilefn(surnme,fstnme,lstnme,emailid);
-	    Assert.assertTrue(profile.successmessage.isDisplayed());
-		
-}
-	
-	
-	@DataProvider(name="profiledata")
-	public Object[][] getInValidData() throws Throwable {
-		
-		String path =Constants.EXCEL_FILE_PATH;
-		ExcelUtilities excelu= new ExcelUtilities (path);
-		int totalrows = excelu.getRowCount("Newprofiledata");
-		int totalcols = excelu.getCellCount("Newprofiledata", 1);
-		String profileDatas[][] = new String[totalrows][totalcols];
-		for (int i = 1; i <= totalrows; i++) {
-			for (int j = 0; j < totalcols; j++) {
-				profileDatas[i - 1][j] = excelu.getCellData("Newprofiledata", i, j);
-			}
-
-		}
-		return profileDatas;
+	    Profilepage profile=new Profilepage(driver);
+	   profile.profilePageLoading();
+	   ExcelUtilities excelu=new ExcelUtilities(Constants.EXCEL_FILE_PATH);
+	   excelu.selectExcelFile("TestDatafile", "Newprofiledata");
+	   String  surnme=excelu.getCellData("Newprofiledata", 1, 0);
+	   String  fstnme=	excelu.getCellData("Newprofiledata", 1, 1);
+	   String  lstnme=	excelu.getCellData("Newprofiledata", 1, 2);
+	   String  emailid=excelu.getCellData("Newprofiledata", 1, 3);
+	   
+	   Assert.assertEquals(profile.editProfile(surnme,fstnme,lstnme, emailid), "Profile updated successfully");
+	    
 	}
+  
 }

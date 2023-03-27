@@ -7,12 +7,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import com.obsqura.constants.Constants;
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
 public class UnitsPage {
 	WebDriver driver;
 	WaitUtilities waitu=new WaitUtilities();
-	
+	GenericUtilities genericu=new GenericUtilities();
 	@FindBy(xpath="//span[text()='Products']")
 	WebElement products;
 	@FindBy(xpath = "//button[text()='End tour']")
@@ -42,7 +43,7 @@ public class UnitsPage {
 		endtour.click();
 	}
 
-	public void addNewUnit() {
+	public String addNewUnit() {
 		products.click();
 		units.click();
 		addUnits.click();
@@ -53,7 +54,9 @@ public class UnitsPage {
 		Select select = new Select(allowdecimal);
 		select.selectByVisibleText("Yes");
 		save.click();
-		message.isDisplayed();
+		String displaymessage=genericu.getAttributeOfElement(message);
+		return displaymessage;
+		
 
 	}
 

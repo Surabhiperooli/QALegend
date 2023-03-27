@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.obsqura.constants.Constants;
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.PageUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
@@ -12,7 +13,7 @@ public class BarCodePage {
 	WebDriver driver;
 	PageUtilities pageu=new PageUtilities() ;
 	WaitUtilities waitu = new WaitUtilities();
-	
+	GenericUtilities genericu=new GenericUtilities();
 	@FindBy(xpath ="//a[@id='tour_step2_menu']")
 	WebElement settings;
 	@FindBy(xpath ="//span[text()='Barcode Settings']")
@@ -61,7 +62,7 @@ public class BarCodePage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void addNewBarcode() {
+	public String addNewBarcode() {
 		settings.click();
 		barcodesettings.click();
 		addnewBarcode.click();
@@ -77,10 +78,11 @@ public class BarCodePage {
 		pageu.clearAndEnterText(distancebtwncolumn, Constants.DISTANCE_BTWN_COLMNS);
 		pageu.clearAndEnterText(numberofstickers, Constants.NO_OF_STICKERS);
 		save.click();
-		successmessage.isDisplayed();
+		String actualmessage=genericu.getAttributeOfElement(successmessage);
+		return actualmessage;
 	}
 
-	public boolean deleteBarCode() {
+	public String deleteBarCode() {
 		settings.click();
 		barcodesettings.click();
 		pageu.clearAndEnterText(searchfield, Constants.STICKER_NAME);
@@ -88,7 +90,8 @@ public class BarCodePage {
 		deletbutton.click();
 		deleteok.click();
 		pageu.clearAndEnterText(searchfield, Constants.STICKER_NAME);
-		return detetedtoastmessage.isDisplayed();
+		String displaymessage=genericu.getAttributeOfElement(detetedtoastmessage);
+		return displaymessage;
 	}
 
 }

@@ -9,14 +9,13 @@ import com.obsqura.pages.TaxRatePage;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class TaxRatePageTest extends TestHelper{
 	 
-@Test(groups= {"sanity"})
+@Test(groups= {"Sanity"})
 public void  verifyWhetherTheUserCanAddNewTaxRate() {
 	LoginPage loginpage = new LoginPage(driver);
 	loginpage.loginWithvalidLoginCredentials("admin", "123456");
 	TaxRatePage taxratepage=new TaxRatePage (driver);
 	taxratepage.closeEndtour();
-	taxratepage.addNewTaxRate("TAX10", "50");
-	Assert.assertTrue(taxratepage.successmessage.isDisplayed());
+    Assert.assertEquals(taxratepage.addNewTaxRate("TAX10", "50"), "Tax rate added successfully");
 		
 	
 }

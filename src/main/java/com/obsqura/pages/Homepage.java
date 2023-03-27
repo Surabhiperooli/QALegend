@@ -103,13 +103,5 @@ public class Homepage {
 		return notification;
 
 	}
-
-	public boolean todaysProfitPopUpMessage() {
-		waitu.waitforelementtobeClickable(driver,todaysprofitmessagebutton );
-		todaysprofitmessagebutton.click();
-		System.out.println(todaysprofitmessagedisplay.isDisplayed());
-        return todaysprofitmessagedisplay.isDisplayed();
-	}
-
 	
 }

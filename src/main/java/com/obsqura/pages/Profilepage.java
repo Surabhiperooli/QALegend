@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.obsqura.constants.Constants;
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.PageUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
@@ -20,7 +21,7 @@ public class Profilepage extends com.obsqura.utiities.PageUtilities{
 	WebDriver driver;
 	PageUtilities pageu=new PageUtilities();
 	WaitUtilities waitu=new WaitUtilities();
-	
+	GenericUtilities genericu=new GenericUtilities();
 	@FindBy(xpath="/html/body/div[2]/header/nav/div/ul/li[2]/a/span")
 	WebElement profiletitle;
 	@FindBy(xpath="//a[text()='Profile']")
@@ -62,18 +63,15 @@ public class Profilepage extends com.obsqura.utiities.PageUtilities{
 		PageFactory.initElements(driver, this);
 	}
 
-	public boolean profilepageloading() {
+	public boolean profilePageLoading() {
 		profiletitle.click();
 		profile.click();
 		return profilewelcomemessage.isDisplayed();
 	}
 
-	public boolean editprofile() {
-		return editprofilebox.isDisplayed();
+	
 
-	}
-
-	public void editprofilefn(String surnme, String fstnme, String lstnme, String emailid) {
+	public String editProfile(String surnme, String fstnme, String lstnme, String emailid) {
 		surname.click();
 		surname.sendKeys(surnme);
 		firstname.click();
@@ -85,7 +83,8 @@ public class Profilepage extends com.obsqura.utiities.PageUtilities{
 		languagedropdown.click();
 		pageu.clearAndEnterText(languagefield,Constants.language+Keys.ENTER );
 		updateprofile.click();
-		successmessage.isDisplayed();
+		String displaymessage=genericu.getAttributeOfElement(successmessage);
+		return displaymessage;
 	}
 
 	

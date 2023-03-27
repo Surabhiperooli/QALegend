@@ -14,14 +14,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.util.Assert;
 import com.obsqura.constants.Constants;
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.PageUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
 public class CustomerPage {
 	
 	WebDriver driver;
-	PageUtilities pageu=new PageUtilities() ;
+	PageUtilities pageu=new PageUtilities();
 	WaitUtilities waitu=new WaitUtilities();
+	GenericUtilities genericu=new  GenericUtilities();
 	@FindBy(xpath="//i[@class='fa fa-address-book']")
 	WebElement contacts;
 	@FindBy(xpath="//a[text()=' Customers']")
@@ -46,20 +48,16 @@ public class CustomerPage {
 	WebElement edit;
 	@FindBy(xpath="//input[@id='alternate_number']")
 	WebElement alternatenumber;
-	@FindBy(xpath="//button[@type='submit']")
+	@FindBy(xpath="//button[text()='Update']")
 	WebElement update;
 	@FindBy(xpath="//*[@id=\"toast-container\"]/div/div")
 	public WebElement updatedmessage;
-    @FindBy(xpath="//a[@class=\"btn buttons-collection btn-info\"]") 
-	WebElement actionbutton;
-    @FindBy(xpath="//a[text()=\" Copy\"]")
-	WebElement copy;
-	@FindBy(xpath="//div[text()='Copied 25 rows to clipboard']']")
-	WebElement message1;
-	@FindBy(xpath="//div[@id='datatables_buttons_info']")
-	public WebElement message;
-	
-
+	@FindBy(xpath="//a[@class='delete_contact_button']")
+	WebElement deletbutton;
+	@FindBy(xpath="//button[text()='OK']")
+	WebElement deletok;
+    @FindBy(xpath="//*[@id=\"toast-container\"]/div/div")
+    WebElement deletedmessage;
 	
 	public CustomerPage(WebDriver driver) {
 		this.driver = driver;
@@ -78,18 +76,16 @@ public class CustomerPage {
 		successmessage.isDisplayed();		
 	}
 
-	public void editNewlyAddedCustomerData() {
+	public String deleteNewlyAddedCustomerData() {
 		contacts.click();
 		customers.click();
 		pageu.clearAndEnterText(search, Constants.NEWCUSTOMER_NAME);
 		actions.click();
-		edit.click();
-		pageu.clearAndEnterText(alternatenumber, Constants.ALTERNATE_MOBILE);
-		waitu.waitforelementtobeClickable(driver, update);
-		update.click();
-		System.out.println(updatedmessage.isDisplayed());
+		deletbutton.click();
+		waitu.waitforelementtobeClickable(driver, deletok);
+		deletok.click();
+		String deletmessage=genericu.getAttributeOfElement(deletedmessage);
+		return deletmessage;
 		
-	}
-	
-
 }
+	}

@@ -9,7 +9,7 @@ import com.obsqura.pages.Homepage;
 import com.obsqura.pages.LoginPage;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class BusinessSettingsPageTest extends TestHelper{
-	@Test
+	@Test(groups={"Regression"})
 	public void verifyUserCanUpdateBusinessSettings() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithInvalidLoginCredentials("admin", "123456");

@@ -17,7 +17,7 @@ public class TaxRatePage {
 	WebElement endtour;
 	@FindBy(xpath ="//*[@id=\"tour_step2_menu\"]/span[2]/i")	
 	WebElement settingsdropdown;
-	@FindBy(xpath ="//span[text()='Tax Rates']")
+	@FindBy(xpath ="//*[@id=\"tour_step3\"]/li[6]/a")
 	WebElement taxrates;
 	@FindBy(xpath ="/html/body/div[2]/div[1]/section[2]/div[1]/div[1]/div/button")
 	WebElement addbutton;
@@ -39,7 +39,7 @@ public class TaxRatePage {
 		endtour.click();
 	}
 
-	public boolean addNewTaxRate(String nme, String tax) {
+	public String addNewTaxRate(String nme, String tax) {
 		settingsdropdown.click();
 		taxrates.click();
 		addbutton.click();
@@ -47,7 +47,9 @@ public class TaxRatePage {
 		pageu.clearAndEnterText(taxratefield, tax);
 		savebutton.click();
 		System.out.println(successmessage.isDisplayed());
-		return successmessage.isDisplayed();
+		String display=successmessage.getAttribute("innerText");
+		System.out.println(display);
+		return display;
 	}
 
 }

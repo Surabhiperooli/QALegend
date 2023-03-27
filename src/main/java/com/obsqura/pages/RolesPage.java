@@ -14,6 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.obsqura.constants.Constants;
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.PageUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
@@ -24,7 +25,7 @@ public class RolesPage {
 	public String originallist;
 	public String newlist;
 	WaitUtilities waitu=new WaitUtilities();
-	
+	GenericUtilities genericu=new GenericUtilities();
 	
 	@FindBy(xpath="//button[text()='End tour']")
 	WebElement endtour;
@@ -38,6 +39,8 @@ public class RolesPage {
 	WebElement rolename;
 	@FindBy(xpath="//button[@class='btn btn-primary pull-right']")
 	WebElement save;
+	@FindBy(xpath="//div[text()='Role added successfully']")
+	WebElement successmessage;
 	@FindBy(xpath="//input[@class='form-control input-sm']")
 	WebElement searchrole;
 	@FindBy(xpath="//div[@class='dataTables_info']")
@@ -46,8 +49,8 @@ public class RolesPage {
 	WebElement delete;
 	@FindBy(xpath="//button[text()='OK']")
 	WebElement deleteok;
-	@FindBy(xpath="//td[@class='dataTables_empty']")
-	public WebElement searchdatadeletemsg;
+	@FindBy(xpath="//div[text()='Role deleted successfully']")
+	public WebElement deletemsg;
 	
 	public RolesPage(WebDriver driver) {
 		this.driver = driver;
@@ -56,7 +59,7 @@ public class RolesPage {
 	public void endtour() {
 		endtour.click();
 	}
-	public void addNewRole(String newrole) {
+	public String addNewRole() {
 		dropdownbutton.click();
 		roles.click();
 		add.click();
@@ -64,19 +67,18 @@ public class RolesPage {
 		pageu.clearAndEnterText(rolename, Constants.NEWROLE);
 		save.click();
 		pageu.clearAndEnterText(searchrole,Constants.NEWROLE);
-		boolean status=searchdata.isDisplayed();
-		System.out.println(searchdata.isDisplayed());
-		
+		String addedmessage=genericu.getAttributeOfElement(successmessage);
+		return addedmessage;
 	}
-	public void deleteRole(String newrole) {
+	public String deleteRole() {
 		dropdownbutton.click();
 		roles.click();
 		pageu.clearAndEnterText(searchrole, Constants.NEWROLE);
 		delete.click();
+		waitu.waitforelementtobeClickable(driver, deleteok);
 		deleteok.click();
-		pageu.clearAndEnterText(searchrole, Constants.NEWROLE);
-		searchdatadeletemsg.isDisplayed();
-		System.out.println(searchdatadeletemsg.isDisplayed());
+		String message=genericu.getTextOfElement(deletemsg);
+		return message;
 	}
 			
         

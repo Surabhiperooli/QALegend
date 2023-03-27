@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.PageUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
@@ -14,22 +15,26 @@ public class ProductPage {
 	WebDriver driver;
 	PageUtilities pageu=new PageUtilities() ;
 	WaitUtilities waitu = new WaitUtilities();
+	GenericUtilities genericu=new GenericUtilities();
 	
 	@FindBy(xpath = "//*[@id=\"tour_step5_menu\"]")
 	WebElement productsdrowpdown;
 	@FindBy(xpath = "//*[@id=\"tour_step5\"]/ul")
 	WebElement productsdropdownlist;
-	@FindBy(xpath = "//a[text()='List Products']")
+	@FindBy(xpath="//input[@type='search']")
+	WebElement search;
+	@FindBy(xpath="//*[@id=\"product_table\"]/tbody/tr/td[1]/input")
+	WebElement
+	checkbox;
+	@FindBy(xpath = "//*[@id=\"tour_step5\"]/ul/li[1]/a")
 	WebElement listproducts;
 	@FindBy(xpath = "//div[@id='product_list_tab']")
-	WebElement firstsetofproducts;
-	@FindBy(xpath = "//input[@id='select-all-row']")
-	WebElement selectallcheckbox;
+	WebElement firstsetofproducts;;
 	@FindBy(xpath = "//*[@id=\"product_list_tab\"]")
 	public WebElement productlist;
 	@FindBy(xpath = "//input[@id='deactivate-selected']")
 	WebElement deactivateselected;
-	@FindBy(xpath = "/html/body/div[4]/div/div[3]/div[2]/button")
+	@FindBy(xpath = "//button[text()='OK']")
 	WebElement warningmessageok;
 	@FindBy(xpath = "//div[text()='Products deactivated successfully']")
 	public WebElement deactivatedtoastmessage;
@@ -83,19 +88,7 @@ public class ProductPage {
 	}
 
 	
-
-	public boolean deactiveSelectedWarningMessage() {
-		productsdrowpdown.click();
-		listproducts.click();
-		waitu.waitforelementtobeClickable(driver, selectallcheckbox);
-		selectallcheckbox.click();
-		deactivateselected.click();
-		warningmessageok.click();
-		System.out.println(deactivatedtoastmessage.isDisplayed());
-		return deactivatedtoastmessage.isDisplayed();
-	}
-
-	public void addnewProduct(String productname, String unit, String barcode, String alertquantity,String exctax,String inctax) {
+	public String addnewProduct(String productname, String unit, String barcode, String alertquantity,String exctax,String inctax) {
 		 
 		productsdrowpdown.click();
 		listproducts.click();
@@ -113,7 +106,8 @@ public class ProductPage {
 		pageu.clearAndEnterText(exctaxelement,exctax+Keys.ENTER);
 		pageu.clearAndEnterText(inctaxelement,inctax+Keys.ENTER);
 		savebutton.click();
-		success.isDisplayed();
+		String displaymessage=genericu.getAttributeOfElement(success);
+		return displaymessage;
 		}
 	
 	}

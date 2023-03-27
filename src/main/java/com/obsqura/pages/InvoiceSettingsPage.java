@@ -45,6 +45,7 @@ public class InvoiceSettingsPage {
 		invoicesettings.click();
 		addbutton.click();
 		format.click();
+		waitu.waitforelementtobeClickable(driver, namefield);
 		pageu.clearAndEnterText(namefield, Constants.BUSINESS_NAME);
 		pageu.clearAndEnterText(startfrom, Constants.START_YEAR);
 		pageu.selecttextfromDropdownList(noofdigits, "5");

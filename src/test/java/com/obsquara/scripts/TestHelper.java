@@ -28,12 +28,12 @@ public class TestHelper {
 	WebDriver driver;
 	public Properties prop;
 
-	@BeforeMethod
+	@BeforeMethod(groups = { "Smoke", "Regression", "Sanity" })
 	@Parameters({ "browser" })
 	public void launchbrowser(String browser) {
-		
+
 		readConfig();
-		
+
 		if (browser.equalsIgnoreCase("Chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
@@ -47,7 +47,6 @@ public class TestHelper {
 
 		}
 
-		
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("url"));
 		// driver.get("https://qalegend.com/billing/public/login");
@@ -55,7 +54,7 @@ public class TestHelper {
 
 	}
 
-//@AfterMethod
+	@AfterMethod(groups = { "Smoke", "Regression", "Sanity" })
 	public void closeBrowser(ITestResult result) throws IOException {
 
 		if (ITestResult.FAILURE == result.getStatus()) {
@@ -86,7 +85,7 @@ public class TestHelper {
 		try {
 			prop = new Properties();
 			FileInputStream fis;
-            fis = new FileInputStream(System.getProperty("user.dir")
+			fis = new FileInputStream(System.getProperty("user.dir")
 					+ "\\src\\main\\resources\\com\\obsquara\\configuration\\config.properties");
 			prop.load(fis);
 		} catch (FileNotFoundException e) {

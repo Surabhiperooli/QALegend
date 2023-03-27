@@ -7,12 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.PageUtilities;
 
 public class BrandPage {
 	
 	WebDriver driver;
 	PageUtilities pageu=new PageUtilities();
+	GenericUtilities genericu=new GenericUtilities();
 	@FindBy(xpath = "//*[contains(@id,'tour_step5_menu')]")
 	public WebElement product;
 	@FindBy(xpath = "//a[@href='https://qalegend.com/billing/public/brands']")
@@ -65,14 +67,15 @@ public class BrandPage {
 		endtour.click();
 	}
 
-	public boolean addaNewBrand(String brndnme, String descrptn) {
+	public String addaNewBrand(String brndnme, String descrptn) {
 		product.click();
 		brand.click();
 		add.click();
 		pageu.clearAndEnterText(brandnamefield, brndnme);
 		pageu.clearAndEnterText(descriptionfield, descrptn);
 		save.click();
-		return successmessage.isDisplayed();
+		String displaymessage=genericu.getAttributeOfElement(successmessage);
+		return displaymessage;
 	}
 
 }

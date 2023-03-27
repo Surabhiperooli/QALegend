@@ -24,7 +24,7 @@ public class Userpage {
 	WebDriver driver;
 	WaitUtilities waitu = new WaitUtilities();
 	PageUtilities pageu = new PageUtilities();
-	
+	GenericUtilities genericu=new GenericUtilities();
 	@FindBy(xpath = "//button[text()='End tour']")
 	WebElement endtour;
 	@FindBy(xpath = "//span[(text()='User Management')]")
@@ -100,7 +100,7 @@ public class Userpage {
 		endtour.click();
 	}
 
-	public boolean addnewUserfunction(String surnme, String frstnme, String lstnme, String email, String paswd,
+	public String addnewUserfunction(String surnme, String frstnme, String lstnme, String email, String paswd,
 			String confrmpaswd) {
 
 		usermanagement.click();
@@ -115,8 +115,8 @@ public class Userpage {
 		pageu.clearAndEnterText(passwordfield, paswd);
 		pageu.clearAndEnterText(passwordconfirmfield, confrmpaswd);
 		savebutton.click();
-		System.out.println(successmessage.isDisplayed());
-		return successmessage.isDisplayed();
+		String actualmessage=genericu.getAttributeOfElement(successmessage);
+		return actualmessage;
 	}
 
 	public void userDeleteFunctionWorking(String usrnmee) {
@@ -124,6 +124,7 @@ public class Userpage {
 		useroption.click();
 		pageu.clearAndEnterText(searchbutton, Constants.NEWUSER_NAME);
 		deletebutton.click();
+		waitu.waitforelementtobeClickable(driver,okbutton );
 		okbutton.click();
 		System.out.println(delmsg.isDisplayed());
 	}

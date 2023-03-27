@@ -12,16 +12,16 @@ import com.obsqura.utiities.ExcelUtilities;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class LoginPageTest extends TestHelper {
 	
-	@Test(priority = 4, dataProvider = "ValidCredentials")
+	@Test(priority = 4,groups = {"Smoke","Sanity"},dataProvider = "ValidCredentials")
 	public void verifyUserisAbleToLoginWitvalidloginfunction(String usrnme, String paswd) {
 
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials(usrnme, paswd);
 		Homepage homepage = new Homepage(driver);
 		Assert.assertTrue(homepage.isHomepageLoaded());
-	}
+		}
 
-	@Test(priority = 5)
+	@Test(priority = 5,groups ={"Smoke","Sanity"})
 
 	public void checkSignOut() {
 		LoginPage loginpage = new LoginPage(driver);
@@ -34,7 +34,7 @@ public class LoginPageTest extends TestHelper {
 
 	
 
-	@Test(priority = 1, dataProvider = "Credentials1")
+	@Test(priority = 1,groups = {"Smoke"}, dataProvider = "Credentials1")
 	public void verifyUserIsNotAbleToLoginWitInvalidloginfunction(String usrnme, String paswd) {
 
 		LoginPage loginpage = new LoginPage(driver);
@@ -45,7 +45,7 @@ public class LoginPageTest extends TestHelper {
 
 	}
 
-	@Test(priority=2,dataProvider="Credentials2")
+	@Test(priority=2,groups = {"Smoke"},dataProvider="Credentials2")
 	public void verifyUserIsNotAbleToLoginWitInvalidPassword(String usrnme, String paswd) {
 
 		LoginPage loginpage = new LoginPage(driver);
@@ -56,7 +56,7 @@ public class LoginPageTest extends TestHelper {
 
 	}
 
-	@Test(priority=3,dataProvider="Credentials3")
+	@Test(priority=3,groups = {"Smoke"},dataProvider="Credentials3")
 	public void verifyUserIsNotAbleToLoginWitInvalidUsername(String usrnme, String paswd) {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithInvalidLoginCredentials(usrnme, paswd);
@@ -109,21 +109,21 @@ public class LoginPageTest extends TestHelper {
 		return invalidloginpassword;
 	}
 
+
 @DataProvider(name="Credentials3")
-	public Object[][] getInValidUsername() throws Throwable {
-		String path = Constants.EXCEL_FILE_PATH;
-
-		ExcelUtilities  lib = new ExcelUtilities (path);
-		int totalrows = lib.getRowCount("Invalidusername");
-		int totalcols = lib.getCellCount("Invalidusername", 1);
-		String invalidloginUsername[][] = new String[totalrows][totalcols];
-		for (int i = 1; i <= totalrows; i++) {
-			for (int j = 0; j < totalcols; j++) {
-				invalidloginUsername[i - 1][j] = lib.getCellData("Invalidusername", i, j);
-			}
-
+	
+    public Object[][] getInValidUsername() throws Throwable {
+    ExcelUtilities  excelu = new ExcelUtilities (Constants.EXCEL_FILE_PATH);
+	int totalrows = excelu.getRowCount("Invalidusername");
+	int totalcols = excelu.getCellCount("Invalidusername", 1);
+	String invalidloginusername[][] = new String[totalrows][totalcols];
+	for (int i = 1; i <= totalrows; i++) {
+		for (int j = 0; j < totalcols; j++) {
+			invalidloginusername[i - 1][j] = excelu.getCellData("Invalidusername", i, j);
 		}
-		return invalidloginUsername;
-	}
 
-}
+	}
+	return invalidloginusername;
+	}}
+
+

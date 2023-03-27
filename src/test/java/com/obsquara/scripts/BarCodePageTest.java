@@ -9,25 +9,22 @@ import com.obsqura.pages.Homepage;
 import com.obsqura.pages.LoginPage;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class BarCodePageTest extends TestHelper {
-@Test(priority=1)
+@Test(priority=1,groups={"Regression"})
 public void verifyUserCanAddNewBarCodeToProducts() {
 	LoginPage loginpage = new LoginPage(driver);
 	loginpage.loginWithInvalidLoginCredentials("admin", "123456");
 	Homepage homepage = new Homepage(driver);
 	homepage.closeEndtour();
 	BarCodePage barcodepge=new BarCodePage(driver);
-	barcodepge.addNewBarcode();
-	Assert.assertTrue(barcodepge.successmessage.isDisplayed());
+	Assert.assertEquals(barcodepge.addNewBarcode(),"Barcode setting added successfully");
 	
 }
-@Test(priority=2)
+@Test(priority=2,groups={"Regression"})
 public void verifyUserCanDeleteBarCodeS() {
 	LoginPage loginpage = new LoginPage(driver);
 	loginpage.loginWithInvalidLoginCredentials("admin", "123456");
 	Homepage homepage = new Homepage(driver);
 	homepage.closeEndtour();
 	BarCodePage barcodepge=new BarCodePage(driver);
-	barcodepge.deleteBarCode();
-	Assert.assertTrue(barcodepge.detetedtoastmessage.isDisplayed());
-	
+	Assert.assertEquals(barcodepge.deleteBarCode(),"Barcode setting deleted successfully");
 }}

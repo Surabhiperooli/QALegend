@@ -9,24 +9,19 @@ import com.obsqura.constants.Constants;
 import com.obsqura.pages.LoginPage;
 import com.obsqura.pages.Userpage;
 import com.obsqura.utiities.ExcelUtilities;
+import com.obsqura.utiities.GenericUtilities;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class Userpagetest extends TestHelper {
 	
 	
 
-	@Test(priority=1,dataProvider="Newuserdata")
+	@Test(priority=1,dataProvider="Newuserdata",groups={"Regression"})
 	public void verifyWhetherNewUserCanSuccessfullyAdded(String surnme, String frstnme, String lstnme, String email, String paswd, String confrmpaswd) {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials("admin", "123456");
 		Userpage user = new Userpage(driver);
 		user.endtour();
-		user.addnewUserfunction(surnme, frstnme, lstnme, email, paswd, confrmpaswd);
-		if (user.successmessage.isDisplayed()) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
-		}
-
+		Assert.assertEquals(user.addnewUserfunction(surnme, frstnme, lstnme, email, paswd, confrmpaswd), "User added successfully");
 	}
 
 	@DataProvider(name = "Newuserdata")
@@ -45,7 +40,7 @@ public class Userpagetest extends TestHelper {
 		return invalidloginData;
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3,groups={"Regression"})
 
 	public void verifyWhetehraUserCanSuccessfullyDelete() {
 		LoginPage loginpage = new LoginPage(driver);
@@ -57,7 +52,7 @@ public class Userpagetest extends TestHelper {
 			
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2,groups={"Regression"})
 
 	public void verifyWhetehraUserCanviewalreadyRegisterdUserDetails() {
 		LoginPage loginpage = new LoginPage(driver);

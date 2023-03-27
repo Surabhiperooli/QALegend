@@ -13,14 +13,13 @@ import com.obsqura.pages.LoginPage;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class BrandpageTest extends TestHelper {
 
-	@Test(dataProvider = "BrandData")
+	@Test(dataProvider = "BrandData",groups= {"Regression","Sanity"})
 	public void verifyUserCanAddNewBrand(String brndnme, String descrptn) {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials("admin", "123456");
 		BrandPage brandpge = new BrandPage(driver);
 		brandpge.closeEndtour();
-		brandpge.addaNewBrand(brndnme, descrptn);
-		Assert.assertTrue(brandpge.successmessage.isDisplayed()) ;
+		Assert.assertEquals(brandpge.addaNewBrand(brndnme, descrptn),"Brand added successfully");
 
 	}
 

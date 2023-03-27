@@ -40,6 +40,10 @@ public class GenericUtilities {
 	{
 		return element.getText();
 	}
+	public String getAttributeOfElement(WebElement element)
+	{
+		return element.getAttribute("innerText");
+	}
 	public boolean is_TextAsExpected(WebElement element, String expectedtext)
 	{
 		String text = element.getText();

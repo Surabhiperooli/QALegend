@@ -9,22 +9,22 @@ import com.obsqura.pages.LoginPage;
 import com.obsqura.pages.RolesPage;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class RolesPageTest extends TestHelper{
-	@Test(priority=1)
+	@Test(priority=1,groups={"Regression"})
 	public void verifyTheUserCanAddNewRole() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithInvalidLoginCredentials("admin", "123456");
 		RolesPage rolespge=new RolesPage(driver);
 		rolespge.endtour();
-		rolespge.addNewRole(Constants.NEWROLE);
-		Assert.assertTrue(rolespge.searchdata.isDisplayed());
+		Assert.assertEquals(rolespge.addNewRole(),"Role added successfully");
 			}
-	@Test(priority=2)
+	@Test(priority=2,groups={"Regression"})
 	public void verifyTheUserCanDeleteRole() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithInvalidLoginCredentials("admin", "123456");
 		RolesPage rolespge=new RolesPage(driver);
 		rolespge.endtour();
-		rolespge.deleteRole(Constants.NEWROLE);
-		Assert.assertTrue(rolespge.searchdatadeletemsg.isDisplayed()) ;
+		Assert.assertEquals(rolespge.deleteRole(),"Role deleted successfully");
+		
+		
 		}}
 	

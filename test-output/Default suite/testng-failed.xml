@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.obsquara.scripts.RolesPageTest">
+      <class name="com.obsquara.scripts.TaxRatePageTest">
         <methods>
-          <include name="verifyTheUserCanDeleteRole"/>
           <include name="launchbrowser"/>
+          <include name="verifyWhetherTheUserCanAddNewTaxRate"/>
         </methods>
-      </class> <!-- com.obsquara.scripts.RolesPageTest -->
+      </class> <!-- com.obsquara.scripts.TaxRatePageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -10,19 +10,20 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.WebDriver;
 
 import com.obsqura.constants.Constants;
 
 public class ExcelUtilities {
+	WebDriver driver;
 	public FileInputStream fis;
-	public FileOutputStream fo;
 	public XSSFWorkbook workbook;
 	public XSSFSheet sheet;
 	public XSSFRow row;
 	public XSSFCell cell;
 	public CellStyle style;
-	String path=null;
-	public ExcelUtilities (String path) {
+	String path=Constants.EXCEL_FILE_PATH;
+	public ExcelUtilities(String path) {
 		this.path=path;
 	}
 	public int getRowCount(String sheetName) throws Throwable
@@ -70,26 +71,10 @@ public class ExcelUtilities {
 	return data;
 		
 	}
-	public String setCellData(String sheetName,int rownum,int colum,String data) throws Throwable
-	{
-    fis= new FileInputStream(path);
-	workbook=new XSSFWorkbook(fis);
-	sheet=workbook.getSheet(sheetName);
-	
-	row=sheet.getRow(rownum);
-	cell=row.getCell(colum);
-	cell.setCellValue(data);
-	
-	fo=new FileOutputStream(path);
-	workbook=write(fo);
-	workbook.close();
-	fis.close();
-	return data;
-		
-	}
+
 	public void selectExcelFile(String workBookName, String sheetName) {
 		try {
-			String path = Constants.EXCEL_FILE_PATH + workBookName + ".xlsx";
+			String path = Constants.EXCEL_FILE_PATH;
 			File src = new File(path);
 			FileInputStream fi = new FileInputStream(src);
 			workbook = new XSSFWorkbook(fi);
@@ -100,10 +85,15 @@ public class ExcelUtilities {
 		}
 
 	}
-
-	private XSSFWorkbook write(FileOutputStream fo2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+
+

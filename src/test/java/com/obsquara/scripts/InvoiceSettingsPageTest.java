@@ -9,7 +9,8 @@ import com.obsqura.pages.InvoiceSettingsPage;
 import com.obsqura.pages.LoginPage;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class InvoiceSettingsPageTest extends TestHelper{
-@Test
+@Test(groups = {"Regression" })
+
 public void verifyUserCanAddNewInvoiceSettings() {
 	LoginPage loginpage = new LoginPage(driver);
 	loginpage.loginWithvalidLoginCredentials("admin", "123456");

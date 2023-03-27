@@ -9,10 +9,20 @@
     <classes>
       <class name="com.obsquara.scripts.RolesPageTest">
         <methods>
+          <include name="verifyTheUserCanAddNewRole"/>
           <include name="verifyTheUserCanDeleteRole"/>
           <include name="launchbrowser"/>
+          <include name="closeBrowser"/>
         </methods>
       </class> <!-- com.obsquara.scripts.RolesPageTest -->
+      <class name="com.obsquara.scripts.Userpagetest">
+        <methods>
+          <include name="verifyWhetherNewUserCanSuccessfullyAdded" invocation-numbers="0"/>
+          <include name="launchbrowser"/>
+          <include name="verifyWhetehraUserCanSuccessfullyDelete"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.Userpagetest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

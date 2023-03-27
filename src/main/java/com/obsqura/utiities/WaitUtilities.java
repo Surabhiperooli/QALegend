@@ -25,7 +25,7 @@ public class WaitUtilities {
 	}
 
 	public void waitforelementtobeClickable(WebDriver driver,WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(50));
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
 
 		 wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
@@ -46,17 +46,17 @@ public class WaitUtilities {
 	// and width that is greater than 0.
 	public void waitUntilElementIsDisplayedOnScreen(WebDriver driver,WebElement element) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 		wait.until(ExpectedConditions.visibilityOfElementLocated((By) element));
 	
 	}
 
 	public void waitforelementToBeSelected(WebDriver driver,String locator, String attributeType,String attributeValue) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 		wait.until(ExpectedConditions.attributeToBe(By.xpath(locator),attributeType,attributeValue));
 	}
 	public void waitforelementToBeSelected(WebDriver driver,String locator) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 		 wait.until(ExpectedConditions.elementToBeSelected(By.xpath(locator)));
 	}
 

@@ -9,7 +9,7 @@ import com.obsqura.pages.Homepage;
 import com.obsqura.pages.LoginPage;
 @Listeners(com.obsqura.listners.TestNGListerner.class)
 public class Expensepagetest extends TestHelper{
-	@Test
+	@Test(priority=1,groups={"Regression"})
 	public void verifyUserCanAddNewExpense() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials("admin", "123456");
@@ -20,7 +20,7 @@ public class Expensepagetest extends TestHelper{
 		Assert.assertTrue (expensepage.expenseAddedMessage.isDisplayed());
 			
 		}
-	@Test
+	@Test(priority=2,groups={"Regression"})
 	public void verifyUserCanAddExpenseCategory() {
 	LoginPage loginpage = new LoginPage(driver);
 	loginpage.loginWithvalidLoginCredentials("admin", "123456");

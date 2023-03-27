@@ -15,7 +15,7 @@ public class CustomerpageTest extends TestHelper
 {
 	
 	
-@Test
+  @Test(priority=1,groups={"Regression"})
 	public void verifyUserCanAddNewContact() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials("admin", "123456");
@@ -25,17 +25,15 @@ public class CustomerpageTest extends TestHelper
 		custpage.addNewContact();
 		Assert.assertTrue(custpage.successmessage.isDisplayed());
 	}
-	@Test
-	public void verifyUserCanUpdateNewlyAddedCustomerData() {
+	
+	@Test(priority=2,groups={"Regression"})
+	public void verifyUserCanDeletNewlyAddedCustomerData() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithvalidLoginCredentials("admin", "123456");
 		Homepage homepage = new Homepage(driver);
 		homepage.closeEndtour();	
 		CustomerPage custpage=new CustomerPage(driver);
-		custpage.editNewlyAddedCustomerData();
-		Assert.assertTrue(custpage.updatedmessage.isDisplayed());
-	
-	
+		Assert.assertEquals(custpage.deleteNewlyAddedCustomerData(),"Contact deleted successfully");
 	}
 	
 	

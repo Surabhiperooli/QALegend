@@ -13,7 +13,7 @@ import com.obsqura.pages.LoginPage;
 
 public class HomepageTest extends TestHelper {
 
-	@Test
+	@Test (groups = {"Regression" })
 
 	public void checkHomePageloaded() {
 
@@ -22,12 +22,12 @@ public class HomepageTest extends TestHelper {
 		loginpage.loginWithInvalidLoginCredentials("admin", "123456");
 		homepage.closeEndtour();
 		boolean result = homepage.isHomepageLoaded();
-		Assert.assertTrue(result);// hard assertion
+		Assert.assertTrue(result);
 	}
 
 
 
-	@Test
+	@Test(groups = {"Regression" })
 	public void verifyWelcomeMessageShowingAsExpected() {
 
 		LoginPage loginpage = new LoginPage(driver);
@@ -41,7 +41,8 @@ public class HomepageTest extends TestHelper {
 
 	
 
-	@Test(retryAnalyzer=com.obsqura.listners.RetryAnalyzer.class)
+	@Test(retryAnalyzer=com.obsqura.listners.RetryAnalyzer.class,groups = {"Regression" })
+
 	public void verifyCalcutatorShowingWhileClickingOnCalculatorIcon() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithInvalidLoginCredentials("admin", "123456");
@@ -51,19 +52,9 @@ public class HomepageTest extends TestHelper {
 		Assert.assertTrue(homepage.calculatordisplay.isDisplayed()); 
 			}
 
-	@Test(retryAnalyzer=com.obsqura.listners.RetryAnalyzer.class)
-	public void verifyTodaysProfitMessageDisplayingWhileClickingOnTodaysProfitIcon() {
-		LoginPage loginpage = new LoginPage(driver);
-		loginpage.loginWithInvalidLoginCredentials("admin", "123456");
-		Homepage homepage = new Homepage(driver);
-		homepage.closeEndtour();
-		homepage.todaysProfitPopUpMessage();
-		Assert.assertTrue(homepage.todaysprofitmessagedisplay.isDisplayed()) ;
-		
 
-	}
+	@Test(groups = {"Regression" })
 
-	@Test
 	public void verifyNotificationmessageShowingUponClickingBellButton() {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginWithInvalidLoginCredentials("admin", "123456");
