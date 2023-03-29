@@ -64,25 +64,25 @@ public class Profilepage extends com.obsqura.utiities.PageUtilities{
 	}
 
 	public boolean profilePageLoading() {
-		profiletitle.click();
-		profile.click();
+		genericu.clickOnElement(profiletitle);
+		genericu.clickOnElement(profile);
 		return profilewelcomemessage.isDisplayed();
 	}
 
 	
 
 	public String editProfile(String surnme, String fstnme, String lstnme, String emailid) {
-		surname.click();
+		genericu.clickOnElement(surname);
 		surname.sendKeys(surnme);
-		firstname.click();
+		genericu.clickOnElement(firstname);
 		firstname.sendKeys(fstnme);
-		lastname.click();
+		genericu.clickOnElement(lastname);
 		lastname.sendKeys(lstnme);
-		email.click();
+		genericu.clickOnElement(email);
 		email.sendKeys(emailid);
-		languagedropdown.click();
+		genericu.clickOnElement(languagedropdown);
 		pageu.clearAndEnterText(languagefield,Constants.language+Keys.ENTER );
-		updateprofile.click();
+		genericu.clickOnElement(updateprofile);
 		String displaymessage=genericu.getAttributeOfElement(successmessage);
 		return displaymessage;
 	}

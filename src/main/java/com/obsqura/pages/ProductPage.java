@@ -90,22 +90,22 @@ public class ProductPage {
 	
 	public String addnewProduct(String productname, String unit, String barcode, String alertquantity,String exctax,String inctax) {
 		 
-		productsdrowpdown.click();
-		listproducts.click();
-		addproduct.click();
+		genericu.clickOnElement(productsdrowpdown);
+		genericu.clickOnElement(listproducts);
+		genericu.clickOnElement(addproduct);
 		pageu.clearAndEnterText(proname,productname );
-		clickunit.click();
+		genericu.clickOnElement(clickunit);
 		pageu.clearAndEnterText(unitelementtypefield,unit+Keys.ENTER);
-		clickbarcode.click();
+		genericu.clickOnElement(clickbarcode);
 		pageu.clearAndEnterText(barcodeelement,barcode+Keys.ENTER);
 		pageu.clearAndEnterText(alertqty,alertquantity);
-		sellingpricetax.click();
-		exclusive.click();
-		producttype.click();
-		single.click();
+		genericu.clickOnElement(sellingpricetax);
+		genericu.clickOnElement(exclusive);
+		genericu.clickOnElement(producttype);
+		genericu.clickOnElement(single);
 		pageu.clearAndEnterText(exctaxelement,exctax+Keys.ENTER);
 		pageu.clearAndEnterText(inctaxelement,inctax+Keys.ENTER);
-		savebutton.click();
+		genericu.clickOnElement(savebutton);
 		String displaymessage=genericu.getAttributeOfElement(success);
 		return displaymessage;
 		}

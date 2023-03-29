@@ -65,25 +65,25 @@ public class CustomerPage {
 	}
 
 	public void addNewContact() {
-		contacts.click();
-		customers.click();
+		genericu.clickOnElement(contacts);
+		genericu.clickOnElement(customers);
 		waitu.waitforelementtobeClickable(driver, addbutton);
-		addbutton.click();
+		genericu.clickOnElement(addbutton);
 		pageu.selecttextfromDropdownList(contacttype, "Customers");
 		pageu.clearAndEnterText(name, Constants.NEWCUSTOMER_NAME);
 		pageu.clearAndEnterText(mobile,Constants.MOBILE);
-		save.click();
+		genericu.clickOnElement(save);
 		successmessage.isDisplayed();		
 	}
 
 	public String deleteNewlyAddedCustomerData() {
-		contacts.click();
-		customers.click();
+		genericu.clickOnElement(contacts);
+		genericu.clickOnElement(customers);
 		pageu.clearAndEnterText(search, Constants.NEWCUSTOMER_NAME);
-		actions.click();
-		deletbutton.click();
+		genericu.clickOnElement(actions);
+		genericu.clickOnElement(deletbutton);
 		waitu.waitforelementtobeClickable(driver, deletok);
-		deletok.click();
+		genericu.clickOnElement(deletok);
 		String deletmessage=genericu.getAttributeOfElement(deletedmessage);
 		return deletmessage;
 		

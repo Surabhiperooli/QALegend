@@ -40,20 +40,20 @@ public class UnitsPage {
 	}
 
 	public void closeEndtour() {
-		endtour.click();
+		genericu.clickOnElement(endtour);
 	}
 
 	public String addNewUnit() {
-		products.click();
-		units.click();
-		addUnits.click();
+		genericu.clickOnElement(products);
+		genericu.clickOnElement(units);
+		genericu.clickOnElement(addUnits);
 		waitu.waitforelementtobeClickable(driver, unitName);
 		unitName.sendKeys(Constants.UNIT_NAME);
 		unitShortName.sendKeys(Constants.UNIT_NAME);
-		allowdecimal.click();
+		genericu.clickOnElement(allowdecimal);
 		Select select = new Select(allowdecimal);
 		select.selectByVisibleText("Yes");
-		save.click();
+		genericu.clickOnElement(save);
 		String displaymessage=genericu.getAttributeOfElement(message);
 		return displaymessage;
 		

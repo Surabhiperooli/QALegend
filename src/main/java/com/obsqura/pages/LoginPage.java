@@ -9,12 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
 public class LoginPage {
 	WebDriver driver;
 	WaitUtilities waitu=new WaitUtilities ();
-	
+	GenericUtilities genericu=new  GenericUtilities();
 	@FindBy(xpath = "//*[@id=\"username\"]")
 	WebElement username;
 	@FindBy(xpath = "//*[@id=\"password\"]")
@@ -50,11 +51,11 @@ public class LoginPage {
 	public String islogOutworking(String usrname, String paswrd) {
 		username.sendKeys(usrname);
 		password.sendKeys(paswrd);
-		login.click();
-		endtour.click();
-		waitu.hardSleep(2000);
-		profile.click();
-		signout.click();
+		genericu.clickOnElement(login);
+		genericu.clickOnElement(endtour);
+		waitu.waitforelementtobeClickable(driver, profile);
+		genericu.clickOnElement(profile);
+		genericu.clickOnElement(signout);
 		String title = driver.getTitle();
 		return title;
 
@@ -63,7 +64,7 @@ public class LoginPage {
 	public void loginWithInvalidLoginCredentials(String usrnme, String paswd) {
 		username.sendKeys(usrnme);
 		password.sendKeys(paswd);
-		login.click();
+		genericu.clickOnElement(login);
 	}
 
 	public String invalidLoginMessageIsDisplaying() {

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.obsqura.constants.Constants;
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.PageUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
@@ -13,6 +14,7 @@ public class InvoiceSettingsPage {
 	WebDriver driver;
 	PageUtilities pageu=new PageUtilities() ;
 	WaitUtilities waitu = new WaitUtilities();
+	GenericUtilities genericu=new  GenericUtilities();
 	
 	@FindBy(xpath ="//a[@id='tour_step2_menu']")
 	WebElement settings;
@@ -41,15 +43,15 @@ public class InvoiceSettingsPage {
 	
 	public void addNewInvoiceSetting() {
 		
-		settings.click();
-		invoicesettings.click();
-		addbutton.click();
-		format.click();
+		 genericu.clickOnElement(settings);
+		 genericu.clickOnElement(invoicesettings);
+		 genericu.clickOnElement(addbutton);
+		 genericu.clickOnElement(format);
 		waitu.waitforelementtobeClickable(driver, namefield);
 		pageu.clearAndEnterText(namefield, Constants.BUSINESS_NAME);
 		pageu.clearAndEnterText(startfrom, Constants.START_YEAR);
 		pageu.selecttextfromDropdownList(noofdigits, "5");
-		savebutton.click();
+		 genericu.clickOnElement(savebutton);
 		successmessage.isDisplayed();
 	}
 }

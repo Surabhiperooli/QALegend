@@ -15,13 +15,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
 public class Homepage {
 	WebDriver driver;
 	public String notification;
 	WaitUtilities waitu = new WaitUtilities();
-	
+	GenericUtilities genericu=new  GenericUtilities();
 	
 	@FindBy(xpath = "//button[text()='End tour']")
 	WebElement endtour;
@@ -65,7 +66,7 @@ public class Homepage {
 	}
 
 	public void closeEndtour() {
-		endtour.click();
+		 genericu.clickOnElement(endtour);
 	}
 
 	public boolean isHomepageLoaded()
@@ -90,7 +91,7 @@ public class Homepage {
 
 	public boolean calculatordisplaying() {
 		waitu.waitforelementtobeClickable(driver, calculator);
-		calculator.click();
+		 genericu.clickOnElement(calculator);
 		System.out.println(calculatordisplay.isDisplayed());
 		return calculatordisplay.isDisplayed();
 		
@@ -98,7 +99,7 @@ public class Homepage {
 
 	public String notificationshowing() {
 		
-		bellbutton.click();
+		 genericu.clickOnElement(bellbutton);
         notification = notificationmessage.getAttribute("innerText");
 		return notification;
 

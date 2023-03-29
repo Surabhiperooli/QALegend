@@ -13,7 +13,7 @@ public class BarCodePage {
 	WebDriver driver;
 	PageUtilities pageu=new PageUtilities() ;
 	WaitUtilities waitu = new WaitUtilities();
-	GenericUtilities genericu=new GenericUtilities();
+	GenericUtilities genericu=new  GenericUtilities();
 	@FindBy(xpath ="//a[@id='tour_step2_menu']")
 	WebElement settings;
 	@FindBy(xpath ="//span[text()='Barcode Settings']")
@@ -63,9 +63,9 @@ public class BarCodePage {
 	}
 
 	public String addNewBarcode() {
-		settings.click();
-		barcodesettings.click();
-		addnewBarcode.click();
+		genericu.clickOnElement(settings);
+		genericu.clickOnElement(barcodesettings);
+		genericu.clickOnElement(addnewBarcode);
 		pageu.clearAndEnterText(stickersheetname, Constants.STICKER_NAME);
 		pageu.clearAndEnterText(topmargin, Constants.TOP_MARGIN);
 		pageu.clearAndEnterText(leftmargin, Constants.LEFT_MARGIN);
@@ -77,18 +77,18 @@ public class BarCodePage {
 		pageu.clearAndEnterText(distancebtwnrows, Constants.DISTANCE_BTWN_ROWS);
 		pageu.clearAndEnterText(distancebtwncolumn, Constants.DISTANCE_BTWN_COLMNS);
 		pageu.clearAndEnterText(numberofstickers, Constants.NO_OF_STICKERS);
-		save.click();
+		genericu.clickOnElement(save);
 		String actualmessage=genericu.getAttributeOfElement(successmessage);
 		return actualmessage;
 	}
 
 	public String deleteBarCode() {
-		settings.click();
-		barcodesettings.click();
+		genericu.clickOnElement(settings);
+		genericu.clickOnElement(barcodesettings);
 		pageu.clearAndEnterText(searchfield, Constants.STICKER_NAME);
 		waitu.waitforelementtobeClickable(driver, deletbutton);
-		deletbutton.click();
-		deleteok.click();
+		genericu.clickOnElement(deletbutton);
+		genericu.clickOnElement(deleteok);
 		pageu.clearAndEnterText(searchfield, Constants.STICKER_NAME);
 		String displaymessage=genericu.getAttributeOfElement(detetedtoastmessage);
 		return displaymessage;

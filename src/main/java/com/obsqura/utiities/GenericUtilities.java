@@ -16,7 +16,9 @@ import com.github.dockerjava.transport.DockerHttpClient.Request.Method;
 
 public class GenericUtilities {
 	
-
+   public void clickOnElement(WebElement element) {
+	   element.click();
+   }
 	
 	public static String getRandomNumber()
 	{

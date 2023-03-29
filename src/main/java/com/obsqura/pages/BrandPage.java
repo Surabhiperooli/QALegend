@@ -64,16 +64,16 @@ public class BrandPage {
 	}
 
 	public void closeEndtour() {
-		endtour.click();
+	genericu.clickOnElement(endtour);
 	}
 
 	public String addaNewBrand(String brndnme, String descrptn) {
-		product.click();
-		brand.click();
-		add.click();
+		genericu.clickOnElement(product);
+		genericu.clickOnElement(brand);
+		genericu.clickOnElement(add);
 		pageu.clearAndEnterText(brandnamefield, brndnme);
 		pageu.clearAndEnterText(descriptionfield, descrptn);
-		save.click();
+		genericu.clickOnElement(save);
 		String displaymessage=genericu.getAttributeOfElement(successmessage);
 		return displaymessage;
 	}

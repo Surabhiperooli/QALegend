@@ -57,26 +57,26 @@ public class RolesPage {
 		PageFactory.initElements(driver, this);
 	}
 	public void endtour() {
-		endtour.click();
+		genericu.clickOnElement(endtour);
 	}
 	public String addNewRole() {
-		dropdownbutton.click();
-		roles.click();
-		add.click();
-		rolename.click();
+		genericu.clickOnElement(dropdownbutton);
+		genericu.clickOnElement(roles);
+		genericu.clickOnElement(add);
+		genericu.clickOnElement(rolename);
 		pageu.clearAndEnterText(rolename, Constants.NEWROLE);
-		save.click();
+		genericu.clickOnElement(save);
 		pageu.clearAndEnterText(searchrole,Constants.NEWROLE);
 		String addedmessage=genericu.getAttributeOfElement(successmessage);
 		return addedmessage;
 	}
 	public String deleteRole() {
-		dropdownbutton.click();
-		roles.click();
+		genericu.clickOnElement(dropdownbutton);
+		genericu.clickOnElement(roles);
 		pageu.clearAndEnterText(searchrole, Constants.NEWROLE);
-		delete.click();
+		genericu.clickOnElement(delete);
 		waitu.waitforelementtobeClickable(driver, deleteok);
-		deleteok.click();
+		genericu.clickOnElement(deleteok);
 		String message=genericu.getTextOfElement(deletemsg);
 		return message;
 	}

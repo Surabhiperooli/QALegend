@@ -97,42 +97,42 @@ public class Userpage {
 	}
 
 	public void endtour() {
-		endtour.click();
+		genericu.clickOnElement(endtour);
 	}
 
 	public String addnewUserfunction(String surnme, String frstnme, String lstnme, String email, String paswd,
 			String confrmpaswd) {
 
-		usermanagement.click();
-		useroption.click();
-		addoptiontext.click();
+		genericu.clickOnElement(usermanagement);
+		genericu.clickOnElement(useroption);
+		genericu.clickOnElement(addoptiontext);
 		pageu.clearAndEnterText(surnamefield, surnme);
 		pageu.clearAndEnterText(firstnamefield, frstnme);
 		pageu.clearAndEnterText(lastnamefield, lstnme);
 		pageu.clearAndEnterText(emailfield, email);
-		roles.click();
+		genericu.clickOnElement(roles);
 		pageu.clearAndEnterText(roleselectionfield, Constants.ROLE + Keys.ENTER);
 		pageu.clearAndEnterText(passwordfield, paswd);
 		pageu.clearAndEnterText(passwordconfirmfield, confrmpaswd);
-		savebutton.click();
+		genericu.clickOnElement(savebutton);
 		String actualmessage=genericu.getAttributeOfElement(successmessage);
 		return actualmessage;
 	}
 
 	public void userDeleteFunctionWorking(String usrnmee) {
-		usermanagement.click();
-		useroption.click();
+		genericu.clickOnElement(usermanagement);
+		genericu.clickOnElement(useroption);
 		pageu.clearAndEnterText(searchbutton, Constants.NEWUSER_NAME);
-		deletebutton.click();
-		waitu.waitforelementtobeClickable(driver,okbutton );
-		okbutton.click();
+		genericu.clickOnElement(deletebutton);
+		waitu.waitforelementtobeClickable(driver,okbutton);
+		genericu.clickOnElement(okbutton);
 		System.out.println(delmsg.isDisplayed());
 	}
 
 	public void viewUserOption() {
-		usermanagement.click();
-		useroption.click();
-		viewuser.click();
+		genericu.clickOnElement(usermanagement);
+		genericu.clickOnElement(useroption);
+		genericu.clickOnElement(viewuser);
 		String title = driver.getTitle();
 		System.out.println(title);
 		System.out.println(viewusercontent.isDisplayed());

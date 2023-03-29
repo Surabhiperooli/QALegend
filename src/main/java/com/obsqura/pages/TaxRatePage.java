@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.obsqura.utiities.GenericUtilities;
 import com.obsqura.utiities.PageUtilities;
 import com.obsqura.utiities.WaitUtilities;
 
@@ -12,7 +13,7 @@ public class TaxRatePage {
 	WebDriver driver;
 	PageUtilities pageu= new PageUtilities();
 	WaitUtilities waitu=new WaitUtilities();
-	
+	GenericUtilities genericu=new GenericUtilities();
 	@FindBy(xpath = "//button[text()='End tour']")
 	WebElement endtour;
 	@FindBy(xpath ="//*[@id=\"tour_step2_menu\"]/span[2]/i")	
@@ -40,12 +41,12 @@ public class TaxRatePage {
 	}
 
 	public String addNewTaxRate(String nme, String tax) {
-		settingsdropdown.click();
-		taxrates.click();
-		addbutton.click();
+		genericu.clickOnElement(settingsdropdown);
+		genericu.clickOnElement(taxrates);
+		genericu.clickOnElement(addbutton);
 		pageu.clearAndEnterText(namefield, nme);
 		pageu.clearAndEnterText(taxratefield, tax);
-		savebutton.click();
+		genericu.clickOnElement(savebutton);
 		System.out.println(successmessage.isDisplayed());
 		String display=successmessage.getAttribute("innerText");
 		System.out.println(display);
