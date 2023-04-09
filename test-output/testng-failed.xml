@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <parameter name="browser" value="Chrome"/>
   <listeners>
     <listener class-name="com.obsqura.listners.TestNGListerner"/>
   </listeners>
   <test thread-count="5" name="Test(failed)">
-    <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="com.obsquara.scripts.RolesPageTest">
+      <class name="com.obsquara.scripts.HomepageTest">
         <methods>
-          <include name="verifyTheUserCanAddNewRole"/>
-          <include name="verifyTheUserCanDeleteRole"/>
+          <include name="verifyCalcutatorShowingWhileClickingOnCalculatorIcon"/>
           <include name="launchbrowser"/>
           <include name="closeBrowser"/>
         </methods>
-      </class> <!-- com.obsquara.scripts.RolesPageTest -->
-      <class name="com.obsquara.scripts.Userpagetest">
-        <methods>
-          <include name="verifyWhetherNewUserCanSuccessfullyAdded" invocation-numbers="0"/>
-          <include name="launchbrowser"/>
-          <include name="verifyWhetehraUserCanSuccessfullyDelete"/>
-          <include name="closeBrowser"/>
-        </methods>
-      </class> <!-- com.obsquara.scripts.Userpagetest -->
+      </class> <!-- com.obsquara.scripts.HomepageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

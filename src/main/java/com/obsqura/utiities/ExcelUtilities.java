@@ -15,7 +15,7 @@ import org.openqa.selenium.WebDriver;
 import com.obsqura.constants.Constants;
 
 public class ExcelUtilities {
-	WebDriver driver;
+	
 	public FileInputStream fis;
 	public XSSFWorkbook workbook;
 	public XSSFSheet sheet;
@@ -23,6 +23,24 @@ public class ExcelUtilities {
 	public XSSFCell cell;
 	public CellStyle style;
 	String path=Constants.EXCEL_FILE_PATH;
+	
+	
+	public ExcelUtilities() {
+
+ 		this.path=path;
+ 		try {
+ 			fis = new FileInputStream(path);
+ 			workbook = new XSSFWorkbook(fis);
+ 			sheet = workbook.getSheetAt(0);
+ 			fis.close();
+ 		} catch (Exception e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}
+ 	}
+	
+	
+	
 	public ExcelUtilities(String path) {
 		this.path=path;
 	}
