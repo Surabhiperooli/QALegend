@@ -54,7 +54,7 @@ public class TestHelper {
 
 	}
 
-	@AfterMethod(groups = { "Smoke", "Regression", "Sanity" })
+	//@AfterMethod(groups = { "Smoke", "Regression", "Sanity" })
 	public void closeBrowser(ITestResult result) throws IOException {
 
 		if (ITestResult.FAILURE == result.getStatus()) {

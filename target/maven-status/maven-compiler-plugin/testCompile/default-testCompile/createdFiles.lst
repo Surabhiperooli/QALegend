@@ -1,5 +1,7 @@
 com\obsquara\scripts\BrandpageTest.class
 com\obsqura\listners\RetryAnalyzer.class
+com\obsquara\scripts\StockAdjustmentPageTest.class
+com\obsquara\scripts\InvoiceSettingsPageTest.class
 com\obsquara\scripts\CustomerpageTest.class
 com\obsquara\scripts\HomepageTest.class
 com\obsquara\scripts\Userpagetest.class
@@ -7,7 +9,11 @@ com\obsqura\listners\TestNGListerner.class
 com\obsquara\scripts\LoginPageTest.class
 com\obsquara\scripts\TaxRatePageTest.class
 com\obsquara\scripts\RolesPageTest.class
+com\obsquara\scripts\CategoryPageTest.class
 com\obsquara\scripts\TestHelper.class
+com\obsquara\scripts\Expensepagetest.class
 com\obsquara\scripts\ProductPageTest.class
-com\obsquara\scripts\RegressionTest.class
+com\obsquara\scripts\BarCodePageTest.class
+com\obsquara\scripts\BusinessSettingsPageTest.class
+com\obsquara\scripts\Unitspagetest.class
 com\obsquara\scripts\ProfilepageTest.class

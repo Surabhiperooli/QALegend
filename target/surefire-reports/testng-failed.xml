@@ -3,70 +3,108 @@
 <suite name="Failed suite [Command line suite]" verbose="0">
   <test thread-count="5" name="Command line test(failed)" verbose="0">
     <classes>
-      <class name="com.obsquara.scripts.TaxRatePageTest">
+      <class name="com.obsquara.scripts.ProductPageTest">
         <methods>
           <include name="launchbrowser"/>
-          <include name="verifyWhetherTheUserCanAddNewTaxRate"/>
+          <include name="verifyWhethertheUserCaNAddNewProduct"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- com.obsquara.scripts.TaxRatePageTest -->
+      </class> <!-- com.obsquara.scripts.ProductPageTest -->
+      <class name="com.obsquara.scripts.StockAdjustmentPageTest">
+        <methods>
+          <include name="whetherUserCanAddNewStockAdjustment"/>
+          <include name="launchbrowser"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.StockAdjustmentPageTest -->
+      <class name="com.obsquara.scripts.ProfilepageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="verifyUserCanEditProfile"/>
+          <include name="IsProfilePageLoadedSuccesfully"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.ProfilepageTest -->
+      <class name="com.obsquara.scripts.BrandpageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="verifyUserCanAddNewBrand"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.BrandpageTest -->
+      <class name="com.obsquara.scripts.CategoryPageTest">
+        <methods>
+          <include name="verifyUserCanAddNewCategories"/>
+          <include name="launchbrowser"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.CategoryPageTest -->
+      <class name="com.obsquara.scripts.CustomerpageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="verifyUserCanDeletNewlyAddedCustomerData"/>
+          <include name="verifyUserCanAddNewContact"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.CustomerpageTest -->
+      <class name="com.obsquara.scripts.BusinessSettingsPageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="verifyUserCanUpdateBusinessSettings"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.BusinessSettingsPageTest -->
+      <class name="com.obsquara.scripts.BarCodePageTest">
+        <methods>
+          <include name="launchbrowser"/>
+          <include name="verifyUserCanDeleteBarCodeS"/>
+          <include name="verifyUserCanAddNewBarCodeToProducts"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.obsquara.scripts.BarCodePageTest -->
       <class name="com.obsquara.scripts.HomepageTest">
         <methods>
-          <include name="verifyTodaysProfitMessageDisplayingWhileClickingOnTodaysProfitIcon"/>
           <include name="verifyCalcutatorShowingWhileClickingOnCalculatorIcon"/>
           <include name="verifyWelcomeMessageShowingAsExpected"/>
           <include name="launchbrowser"/>
           <include name="checkHomePageloaded"/>
           <include name="verifyNotificationmessageShowingUponClickingBellButton"/>
-          <include name="verifyUserManagementDropDownIsWorking"/>
-          <include name="verifyhomepagetitle"/>
+          <include name="closeBrowser"/>
         </methods>
       </class> <!-- com.obsquara.scripts.HomepageTest -->
-      <class name="com.obsquara.scripts.BrandpageTest">
+      <class name="com.obsquara.scripts.InvoiceSettingsPageTest">
         <methods>
           <include name="launchbrowser"/>
-          <include name="verifyUserCanAddNewBrand"/>
+          <include name="verifyUserCanAddNewInvoiceSettings"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- com.obsquara.scripts.BrandpageTest -->
-      <class name="com.obsquara.scripts.ProfilepageTest">
-        <methods>
-          <include name="verifyUserCanUpdatePassword"/>
-          <include name="VerifyUserCanChooseLanguageFromrowpDownList"/>
-          <include name="launchbrowser"/>
-          <include name="verifyUserCanEditProfile"/>
-          <include name="IsProfilePageLoadedSuccesfully"/>
-        </methods>
-      </class> <!-- com.obsquara.scripts.ProfilepageTest -->
-      <class name="com.obsquara.scripts.CustomerpageTest">
-        <methods>
-          <include name="verifyCustomerEntryIsAbleToCopyToClipboard"/>
-          <include name="launchbrowser"/>
-        </methods>
-      </class> <!-- com.obsquara.scripts.CustomerpageTest -->
-      <class name="com.obsquara.scripts.RolesPageTest">
+      </class> <!-- com.obsquara.scripts.InvoiceSettingsPageTest -->
+      <class name="com.obsquara.scripts.TaxRatePageTest">
         <methods>
           <include name="launchbrowser"/>
-          <include name="verifyTheUserCanSorttheRolesTable"/>
+          <include name="verifyWhetherTheUserCanAddNewTaxRate"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- com.obsquara.scripts.RolesPageTest -->
+      </class> <!-- com.obsquara.scripts.TaxRatePageTest -->
       <class name="com.obsquara.scripts.LoginPageTest">
         <methods>
           <include name="launchbrowser"/>
           <include name="checkSignOut"/>
-          <include name="verifyUserIsAbleToChooseRememberMeOption"/>
           <include name="verifyUserisAbleToLoginWitvalidloginfunction"/>
           <include name="verifyUserIsNotAbleToLoginWitInvalidPassword"/>
           <include name="verifyUserIsNotAbleToLoginWitInvalidUsername"/>
           <include name="verifyUserIsNotAbleToLoginWitInvalidloginfunction"/>
+          <include name="closeBrowser"/>
         </methods>
       </class> <!-- com.obsquara.scripts.LoginPageTest -->
-      <class name="com.obsquara.scripts.ProductPageTest">
+      <class name="com.obsquara.scripts.RolesPageTest">
         <methods>
-          <include name="verifyDropDownlistisDisplayingUponClickingOndropdownarrow"/>
-          <include name="verifySelectAllProductselectsallInProductPage"/>
+          <include name="verifyTheUserCanAddNewRole"/>
+          <include name="verifyTheUserCanDeleteRole"/>
           <include name="launchbrowser"/>
-          <include name="verifyClickingonDeactiveselectiveButtonShowsWarningMessageAlert"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- com.obsquara.scripts.ProductPageTest -->
+      </class> <!-- com.obsquara.scripts.RolesPageTest -->
     </classes>
   </test> <!-- Command line test(failed) -->
 </suite> <!-- Failed suite [Command line suite] -->
